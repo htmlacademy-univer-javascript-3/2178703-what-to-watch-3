@@ -1,12 +1,11 @@
-import React from 'react';
+import { Helmet } from 'react-helmet-async';
 
-const style: React.CSSProperties = {
-  left: '30%',
-};
-
-function PlayerScreen(): JSX.Element {
+export default function PlayerScreen(): JSX.Element {
   return (
     <div className="player">
+      <Helmet>
+        <title>WTW. Player film</title>
+      </Helmet>
       <video src="#" className="player__video" poster="img/player-poster.jpg"></video>
 
       <button type="button" className="player__exit">Exit</button>
@@ -15,7 +14,7 @@ function PlayerScreen(): JSX.Element {
         <div className="player__controls-row">
           <div className="player__time">
             <progress className="player__progress" value="30" max="100"></progress>
-            <div className="player__toggler" style={style}>Toggler</div>
+            <div className="player__toggler" style={{left: '30%'}}>Toggler</div>
           </div>
           <div className="player__time-value">1:30:29</div>
         </div>
@@ -40,6 +39,3 @@ function PlayerScreen(): JSX.Element {
     </div>
   );
 }
-
-export default PlayerScreen;
-

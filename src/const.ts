@@ -1,8 +1,14 @@
-const Setting = {
-  PromoFilmTitle: 'The Grand Budapest Hotel',
-  PromoFilmGenre: 'Drama',
-  PromoFilmYear: 2014,
-} as const;
+export enum AppRoute {
+  Main = '/',
+  SignIn = '/login',
+  MyList = '/mylist',
+  FilmData = '/films/:id',
+  Player = '/player/:id',
+}
 
-export default Setting;
+export enum AuthorizationStatus {
+  Auth = 'AUTH',
+  NoAuth = 'NO_AUTH',
+  Unknown = 'UNKNOWN',
+}
 

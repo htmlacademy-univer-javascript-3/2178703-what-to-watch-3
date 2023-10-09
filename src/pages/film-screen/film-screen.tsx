@@ -1,10 +1,19 @@
 import Header from '../../components/header/header';
 import Footer from '../../components/footer/footer';
 import SmallFilmCard from '../../components/small-film-card/small-film-card';
+import { SmallFilmCardProps } from '../../components/small-film-card/small-film-card.props';
+import { Helmet } from 'react-helmet-async';
 
-function FilmScreen(): JSX.Element {
+type FilmScreenProps = {
+  smallFilmCards: SmallFilmCardProps[];
+}
+
+export default function FilmScreen({smallFilmCards}: FilmScreenProps): JSX.Element {
   return (
     <>
+      <Helmet>
+        <title>WTW. Film title</title>
+      </Helmet>
       <section className="film-card film-card--full">
         <div className="film-card__hero">
           <div className="film-card__bg">
@@ -73,9 +82,9 @@ function FilmScreen(): JSX.Element {
               </div>
 
               <div className="film-card__text">
-                <p>In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave`s friend and protege.</p>
+                <p>In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave&apos;s friend and protege.</p>
 
-                <p>Gustave prides himself on providing first-class service to the hotel`s guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave`s lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.</p>
+                <p>Gustave prides himself on providing first-class service to the hotel&apos;s guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave&apos;s lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.</p>
 
                 <p className="film-card__director"><strong>Director: Wes Anderson</strong></p>
 
@@ -91,10 +100,13 @@ function FilmScreen(): JSX.Element {
           <h2 className="catalog__title">More like this</h2>
 
           <div className="catalog__films-list">
-            <SmallFilmCard />
-            <SmallFilmCard />
-            <SmallFilmCard />
-            <SmallFilmCard />
+            {smallFilmCards.map((smallFilmCard: SmallFilmCardProps) => (
+              <SmallFilmCard
+                key={smallFilmCard.id}
+                imgSrc={smallFilmCard.imgSrc}
+                title={smallFilmCard.title}
+              />
+            ))}
           </div>
         </section>
 
@@ -103,6 +115,4 @@ function FilmScreen(): JSX.Element {
     </>
   );
 }
-
-export default FilmScreen;
 
