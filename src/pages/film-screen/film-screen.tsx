@@ -3,13 +3,12 @@ import Footer from '../../components/footer/footer';
 import SmallFilmCard from '../../components/small-film-card/small-film-card';
 import { SmallFilmCardProps } from '../../components/small-film-card/small-film-card.props';
 import { Helmet } from 'react-helmet-async';
-import { ReactNode } from 'react';
 
 type FilmScreenProps = {
   smallFilmCards: SmallFilmCardProps[];
 }
 
-export default function FilmScreen({smallFilmCards}: FilmScreenProps): ReactNode {
+export default function FilmScreen({smallFilmCards}: FilmScreenProps): JSX.Element {
   return (
     <>
       <Helmet>

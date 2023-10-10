@@ -1,7 +1,6 @@
 import { Helmet } from 'react-helmet-async';
-import { ReactNode } from 'react';
 
-export default function AddReviewScreen(): ReactNode {
+export default function AddReviewScreen(): JSX.Element {
   return (
     <section className="film-card film-card--full">
       <Helmet>

@@ -5,14 +5,13 @@ import { PromoFilmCardProps } from '../../components/promo-film-card/promo-film-
 import Header from '../../components/header/header';
 import Footer from '../../components/footer/footer';
 import { Helmet } from 'react-helmet-async';
-import { ReactNode } from 'react';
 
 type MainScreenProps = {
   promoFilmCard: PromoFilmCardProps;
   smallFilmCards: SmallFilmCardProps[];
 }
 
-export default function MainScreen({promoFilmCard, smallFilmCards}: MainScreenProps): ReactNode {
+export default function MainScreen({promoFilmCard, smallFilmCards}: MainScreenProps): JSX.Element {
   return (
     <>
       <Helmet>
