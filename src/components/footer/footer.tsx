@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
+import { ReactNode } from 'react';
 
-export default function Footer(): JSX.Element {
+export default function Footer(): ReactNode {
   return (
     <footer className="page-footer">
       <div className="logo">

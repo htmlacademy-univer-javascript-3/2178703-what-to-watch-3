@@ -1,6 +1,7 @@
 import { SmallFilmCardProps } from './small-film-card.props';
+import { ReactNode } from 'react';
 
-export default function SmallFilmCard({imgSrc, title}: SmallFilmCardProps): JSX.Element {
+export default function SmallFilmCard({imgSrc, title}: SmallFilmCardProps): ReactNode {
   return (
     <article className="small-film-card catalog__films-card">
       <div className="small-film-card__image">

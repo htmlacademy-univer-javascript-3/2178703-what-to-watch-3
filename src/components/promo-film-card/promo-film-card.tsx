@@ -1,6 +1,7 @@
 import { PromoFilmCardProps } from './promo-film-card.props';
+import { ReactNode } from 'react';
 
-export default function PromoFilmCard({imgSrc, title, genre, year}: PromoFilmCardProps): JSX.Element {
+export default function PromoFilmCard({imgSrc, title, genre, year}: PromoFilmCardProps): ReactNode {
   return (
     <div className="film-card__wrap">
       <div className="film-card__info">

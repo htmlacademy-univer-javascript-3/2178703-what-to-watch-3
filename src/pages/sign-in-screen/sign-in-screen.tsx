@@ -1,8 +1,9 @@
 import Header from '../../components/header/header';
 import Footer from '../../components/footer/footer';
 import { Helmet } from 'react-helmet-async';
+import { ReactNode } from 'react';
 
-export default function SignInScreen(): JSX.Element {
+export default function SignInScreen(): ReactNode {
   return (
     <div className="user-page">
       <Helmet>

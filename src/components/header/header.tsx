@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
+import { ReactNode } from 'react';
 
-export default function Header(): JSX.Element {
+export default function Header(): ReactNode {
   return (
     <header className="page-header film-card__head">
       <div className="logo">

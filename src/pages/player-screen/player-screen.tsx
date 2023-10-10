@@ -1,6 +1,7 @@
 import { Helmet } from 'react-helmet-async';
+import { ReactNode } from 'react';
 
-export default function PlayerScreen(): JSX.Element {
+export default function PlayerScreen(): ReactNode {
   return (
     <div className="player">
       <Helmet>
