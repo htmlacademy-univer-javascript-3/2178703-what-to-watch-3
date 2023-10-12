@@ -1,7 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './components/app/app';
-import Setting from './const';
+import { AppProps } from './components/app/app.props';
+import { promoFilm, smallFilmCards } from './mocks';
+
+const appData: AppProps = {
+  promoFilmCard: promoFilm,
+  smallFilmCards: smallFilmCards
+};
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -10,9 +16,8 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <App
-      promoFilmTitle={Setting.PromoFilmTitle}
-      promoFilmGenre={Setting.PromoFilmGenre}
-      promoFilmYear={Setting.PromoFilmYear}
+      promoFilmCard={appData.promoFilmCard}
+      smallFilmCards={appData.smallFilmCards}
     />
   </React.StrictMode>
 );

@@ -1,9 +1,13 @@
 import Header from '../../components/header/header';
 import Footer from '../../components/footer/footer';
+import { Helmet } from 'react-helmet-async';
 
-function SignInScreen(): JSX.Element {
+export default function SignInScreen(): JSX.Element {
   return (
     <div className="user-page">
+      <Helmet>
+        <title>WTW. Sign in</title>
+      </Helmet>
       <Header />
 
       <div className="sign-in user-page__content">
@@ -27,6 +31,3 @@ function SignInScreen(): JSX.Element {
     </div>
   );
 }
-
-export default SignInScreen;
-
