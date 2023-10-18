@@ -1,11 +1,10 @@
-import { ReactNode } from 'react';
 import { Film } from '../../types/film';
 
 type FilmOverviewProps = {
   film: Film;
 }
 
-export default function FilmOverview({film}: FilmOverviewProps): ReactNode {
+export default function FilmOverview({film}: FilmOverviewProps) {
   return (
     <>
       <div className="film-rating">

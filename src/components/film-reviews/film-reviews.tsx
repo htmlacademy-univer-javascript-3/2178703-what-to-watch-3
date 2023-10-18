@@ -1,4 +1,3 @@
-import { ReactNode } from 'react';
 import { ReviewProps } from '../review/review.props';
 import Review from '../review/review';
 
@@ -6,7 +5,7 @@ type FilmReviewsProps = {
   reviews: ReviewProps[];
 }
 
-export default function FilmReviews({reviews}: FilmReviewsProps): ReactNode {
+export default function FilmReviews({reviews}: FilmReviewsProps) {
   return (
     <div className="film-card__reviews film-card__row">
       <div className="film-card__reviews-col">

@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 
-export default function NotFoundScreen(): JSX.Element {
+export default function NotFoundScreen() {
   return (
     <div className="page-content">
       <Helmet>

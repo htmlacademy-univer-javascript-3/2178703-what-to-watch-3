@@ -8,7 +8,7 @@ type AddReviewScreenProps = {
   films: Film[];
 }
 
-export default function AddReviewScreen({films}: AddReviewScreenProps): JSX.Element {
+export default function AddReviewScreen({films}: AddReviewScreenProps) {
   const { id } = useParams();
   const film = films.find((item) => item.id === id) as Film;
   return (

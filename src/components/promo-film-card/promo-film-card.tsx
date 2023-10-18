@@ -1,9 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import { AppRoute } from '../../const';
 import { PromoFilmCardProps } from './promo-film-card.props';
-import { ReactNode } from 'react';
 
-export default function PromoFilmCard({id, posterImage, name, genre, released}: PromoFilmCardProps): ReactNode {
+export default function PromoFilmCard({id, posterImage, name, genre, released}: PromoFilmCardProps) {
   const navigate = useNavigate();
   return (
     <div className="film-card__wrap">

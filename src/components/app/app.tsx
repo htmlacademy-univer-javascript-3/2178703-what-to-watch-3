@@ -1,6 +1,5 @@
 import { Route, BrowserRouter, Routes } from 'react-router-dom';
 import { AppRoute, AuthorizationStatus } from '../../const';
-import { ReactNode } from 'react';
 import { HelmetProvider } from 'react-helmet-async';
 import MainScreen from '../../pages/main-screen/main-screen';
 import SignInScreen from '../../pages/sign-in-screen/sign-in-screen';
@@ -12,7 +11,7 @@ import NotFoundScreen from '../../pages/not-found-screen/not-found-screen';
 import PrivateRoute from '../private-route/private-route';
 import { AppProps } from './app.props';
 
-export default function App({promoFilmCard, smallFilmCards, films, reviews}: AppProps): ReactNode {
+export default function App({promoFilmCard, smallFilmCards, films, reviews}: AppProps) {
   return (
     <HelmetProvider>
       <BrowserRouter>

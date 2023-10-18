@@ -1,7 +1,6 @@
-import { ReactNode } from 'react';
 import { ReviewProps } from './review.props';
 
-export default function Review({date, user, comment, rating}: ReviewProps): ReactNode {
+export default function Review({date, user, comment, rating}: ReviewProps) {
   return(
     <div className="review">
       <blockquote className="review__quote">

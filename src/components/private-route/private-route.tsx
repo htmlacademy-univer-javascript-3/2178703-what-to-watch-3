@@ -7,7 +7,7 @@ type PrivateRouteProps = {
   children: ReactNode;
 }
 
-export default function PrivateRoute(props: PrivateRouteProps): ReactNode {
+export default function PrivateRoute(props: PrivateRouteProps) {
   const {authorizationStatus, children} = props;
 
   return (

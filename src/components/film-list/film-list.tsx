@@ -1,4 +1,3 @@
-import { ReactNode } from 'react';
 import { SmallFilmCardProps } from '../small-film-card/small-film-card.props';
 import SmallFilmCard from '../small-film-card/small-film-card';
 import { useState } from 'react';
@@ -7,7 +6,7 @@ type FilmListProps = {
   films: SmallFilmCardProps[];
 }
 
-export default function FilmList({films}: FilmListProps): ReactNode {
+export default function FilmList({films}: FilmListProps) {
   const [activeFilm, setActiveFilm] = useState({});
   return (
     <div className="catalog__films-list">

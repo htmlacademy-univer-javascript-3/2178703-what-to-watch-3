@@ -1,4 +1,3 @@
-import { ReactNode } from 'react';
 import { Film } from '../../types/film';
 
 const HOUR_MINUTES_COUNT = 60;
@@ -13,7 +12,7 @@ const getRunTime = (runTime: number) => {
   return `${hour}h ${minute}m`;
 };
 
-export default function FilmDetails({film}: FilmDetailsProps): ReactNode {
+export default function FilmDetails({film}: FilmDetailsProps) {
   return (
     <div className="film-card__text film-card__row">
       <div className="film-card__text-col">

@@ -1,8 +1,7 @@
 import { Link } from 'react-router-dom';
-import { ReactNode } from 'react';
 import { AppRoute } from '../../const';
 
-export default function Header(): ReactNode {
+export default function Header() {
   return (
     <header className="page-header film-card__head">
       <div className="logo">

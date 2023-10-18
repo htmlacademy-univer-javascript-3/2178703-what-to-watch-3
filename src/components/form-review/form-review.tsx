@@ -1,7 +1,7 @@
 import { ChangeEvent, useState } from 'react';
 import { RATING_STAR_COUNT } from '../../const';
 
-export default function FormReview(): JSX.Element {
+export default function FormReview() {
   const [rating, setRating] = useState('');
   const [reviewText, setReviewText] = useState('');
 

@@ -18,7 +18,7 @@ type FilmScreenProps = {
   reviews: ReviewProps[];
 }
 
-export default function FilmScreen({smallFilmCards, films, reviews}: FilmScreenProps): JSX.Element {
+export default function FilmScreen({smallFilmCards, films, reviews}: FilmScreenProps) {
   const navigate = useNavigate();
   const { id } = useParams();
   const film = films.find((item) => item.id === id) as Film;

@@ -11,7 +11,7 @@ type MainScreenProps = {
   smallFilmCards: SmallFilmCardProps[];
 }
 
-export default function MainScreen({promoFilmCard, smallFilmCards}: MainScreenProps): JSX.Element {
+export default function MainScreen({promoFilmCard, smallFilmCards}: MainScreenProps) {
   return (
     <>
       <Helmet>

@@ -1,9 +1,8 @@
 import { Link } from 'react-router-dom';
 import { SmallFilmCardProps } from './small-film-card.props';
-import { ReactNode } from 'react';
 import { AppRoute } from '../../const';
 
-export default function SmallFilmCard({id, previewImage, name}: SmallFilmCardProps): ReactNode {
+export default function SmallFilmCard({id, previewImage, name}: SmallFilmCardProps) {
   return (
     <>
       <div className="small-film-card__image">

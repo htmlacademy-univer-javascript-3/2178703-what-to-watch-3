@@ -8,7 +8,7 @@ type MyListScreenProps = {
   smallFilmCards: SmallFilmCardProps[];
 }
 
-export default function MyListScreen({smallFilmCards}: MyListScreenProps): JSX.Element {
+export default function MyListScreen({smallFilmCards}: MyListScreenProps) {
   return(
     <div className="user-page">
       <Helmet>
