@@ -1,6 +1,10 @@
 export type PromoFilmCardProps = {
-  imgSrc: string;
-  title: string;
+  id: string;
+  posterImage: string;
+  name: string;
+  backgroundImage: string;
+  videoLink: string;
   genre: string;
-  year: string;
+  released: number;
+  isFavorite: boolean;
 }

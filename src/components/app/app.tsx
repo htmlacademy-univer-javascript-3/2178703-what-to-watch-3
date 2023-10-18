@@ -11,9 +11,8 @@ import PlayerScreen from '../../pages/player-screen/player-screen';
 import NotFoundScreen from '../../pages/not-found-screen/not-found-screen';
 import PrivateRoute from '../private-route/private-route';
 import { AppProps } from './app.props';
-import { FilmCardCount } from '../../mocks';
 
-export default function App({promoFilmCard, smallFilmCards}: AppProps): ReactNode {
+export default function App({promoFilmCard, smallFilmCards, films, reviews}: AppProps): ReactNode {
   return (
     <HelmetProvider>
       <BrowserRouter>
@@ -32,20 +31,20 @@ export default function App({promoFilmCard, smallFilmCards}: AppProps): ReactNod
               <PrivateRoute
                 authorizationStatus={AuthorizationStatus.NoAuth}
               >
-                <MyListScreen smallFilmCards={smallFilmCards.slice(0, FilmCardCount.MyListScreen)} />
+                <MyListScreen smallFilmCards={smallFilmCards} />
               </PrivateRoute>
             }
           />
           <Route path={AppRoute.FilmData}>
             <Route index element={<NotFoundScreen />} />
             <Route path=':id'>
-              <Route index element={<FilmScreen smallFilmCards={smallFilmCards.slice(0, FilmCardCount.FilmScreen)} />} />
-              <Route path='review' element={<AddReviewScreen />} />
+              <Route index element={<FilmScreen smallFilmCards={smallFilmCards} films={films} reviews={reviews} />} />
+              <Route path='review' element={<AddReviewScreen films={films}/>} />
             </Route>
           </Route>
           <Route path={AppRoute.Player}>
             <Route index element={<NotFoundScreen />} />
-            <Route path=':id' element={<PlayerScreen />} />
+            <Route path=':id' element={<PlayerScreen films={films} />} />
           </Route>
           <Route
             path="*"

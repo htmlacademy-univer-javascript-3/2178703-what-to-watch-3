@@ -1,14 +1,24 @@
 import { Helmet } from 'react-helmet-async';
+import { Film } from '../../types/film';
+import { useNavigate, useParams } from 'react-router-dom';
+import { AppRoute } from '../../const';
 
-export default function PlayerScreen(): JSX.Element {
+type PlayerScreenProps = {
+  films: Film[];
+}
+
+export default function PlayerScreen({films}: PlayerScreenProps): JSX.Element {
+  const navigate = useNavigate();
+  const { id } = useParams();
+  const film = films.find((item) => item.id === id) as Film;
   return (
     <div className="player">
       <Helmet>
-        <title>WTW. Player film</title>
+        <title>WTW. Player {film.name}</title>
       </Helmet>
-      <video src="#" className="player__video" poster="img/player-poster.jpg"></video>
+      <video src={film.videoLink} className="player__video" poster={film.backgroundImage}></video>
 
-      <button type="button" className="player__exit">Exit</button>
+      <button type="button" className="player__exit" onClick={() => navigate(`${AppRoute.FilmData}/${film.id}`)}>Exit</button>
 
       <div className="player__controls">
         <div className="player__controls-row">

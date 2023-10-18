@@ -1,3 +1,5 @@
+export const RATING_STAR_COUNT = 10;
+
 export enum AppRoute {
   Main = '/',
   SignIn = '/login',
@@ -12,3 +14,8 @@ export enum AuthorizationStatus {
   Unknown = 'UNKNOWN',
 }
 
+export enum FilmBlockLink {
+  Overview = 'OVERVIEW',
+  Details = 'DETAILS',
+  Reviews = 'REVIEWS'
+}
