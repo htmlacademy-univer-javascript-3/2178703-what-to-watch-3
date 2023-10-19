@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
-import { ReactNode } from 'react';
+import { AppRoute } from '../../const';
 
-export default function Header(): ReactNode {
+export default function Header() {
   return (
     <header className="page-header film-card__head">
       <div className="logo">
@@ -19,7 +19,7 @@ export default function Header(): ReactNode {
           </div>
         </li>
         <li className="user-block__item">
-          <a className="user-block__link">Sign out</a>
+          <Link className="user-block__link" to={AppRoute.SignIn}>Sign out</Link>
         </li>
       </ul>
     </header>

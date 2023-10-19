@@ -1,17 +1,17 @@
-import SmallFilmCard from '../../components/small-film-card/small-film-card';
 import { SmallFilmCardProps } from '../../components/small-film-card/small-film-card.props';
 import PromoFilmCard from '../../components/promo-film-card/promo-film-card';
 import { PromoFilmCardProps } from '../../components/promo-film-card/promo-film-card.props';
 import Header from '../../components/header/header';
 import Footer from '../../components/footer/footer';
 import { Helmet } from 'react-helmet-async';
+import FilmList from '../../components/film-list/film-list';
 
 type MainScreenProps = {
   promoFilmCard: PromoFilmCardProps;
   smallFilmCards: SmallFilmCardProps[];
 }
 
-export default function MainScreen({promoFilmCard, smallFilmCards}: MainScreenProps): JSX.Element {
+export default function MainScreen({promoFilmCard, smallFilmCards}: MainScreenProps) {
   return (
     <>
       <Helmet>
@@ -27,10 +27,14 @@ export default function MainScreen({promoFilmCard, smallFilmCards}: MainScreenPr
         <Header />
 
         <PromoFilmCard
-          imgSrc={promoFilmCard.imgSrc}
-          title={promoFilmCard.title}
+          id={promoFilmCard.id}
+          posterImage={promoFilmCard.posterImage}
+          name={promoFilmCard.name}
           genre={promoFilmCard.genre}
-          year={promoFilmCard.year}
+          released={promoFilmCard.released}
+          backgroundImage={promoFilmCard.backgroundImage}
+          videoLink={promoFilmCard.videoLink}
+          isFavorite={promoFilmCard.isFavorite}
         />
       </section>
 
@@ -71,15 +75,7 @@ export default function MainScreen({promoFilmCard, smallFilmCards}: MainScreenPr
             </li>
           </ul>
 
-          <div className="catalog__films-list">
-            {smallFilmCards.map((smallFilmCard: SmallFilmCardProps) => (
-              <SmallFilmCard
-                key={smallFilmCard.id}
-                imgSrc={smallFilmCard.imgSrc}
-                title={smallFilmCard.title}
-              />
-            ))}
-          </div>
+          <FilmList films={smallFilmCards} />
 
           <div className="catalog__more">
             <button className="catalog__button" type="button">Show more</button>
