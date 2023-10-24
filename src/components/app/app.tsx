@@ -11,7 +11,7 @@ import NotFoundScreen from '../../pages/not-found-screen/not-found-screen';
 import PrivateRoute from '../private-route/private-route';
 import { Film } from '../../types/film';
 import { PromoFilmCardProps } from '../promo-film-card/promo-film-card';
-import { ReviewProps } from '../review/review.props';
+import { ReviewProps } from '../review/review';
 import { PreviewFilm } from '../../types/preview-film';
 
 export type AppProps = {
