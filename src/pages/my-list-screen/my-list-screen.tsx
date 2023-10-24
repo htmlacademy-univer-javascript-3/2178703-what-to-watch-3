@@ -1,11 +1,11 @@
 import Header from '../../components/header/header';
 import Footer from '../../components/footer/footer';
-import { SmallFilmCardProps } from '../../components/small-film-card/small-film-card.props';
 import { Helmet } from 'react-helmet-async';
 import FilmList from '../../components/film-list/film-list';
+import { PreviewFilm } from '../../types/preview-film';
 
 type MyListScreenProps = {
-  smallFilmCards: SmallFilmCardProps[];
+  smallFilmCards: PreviewFilm[];
 }
 
 export default function MyListScreen({smallFilmCards}: MyListScreenProps) {

@@ -1,4 +1,4 @@
-export type SmallFilmCardProps = {
+export type PreviewFilm = {
   id: string;
   name: string;
   previewImage: string;

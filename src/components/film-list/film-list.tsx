@@ -1,29 +1,36 @@
-import { SmallFilmCardProps } from '../small-film-card/small-film-card.props';
+import { DEBOUNCE_TIME_FOR_PREVIEW_VIDEO } from '../../const';
+import { PreviewFilm } from '../../types/preview-film';
 import SmallFilmCard from '../small-film-card/small-film-card';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
 type FilmListProps = {
-  films: SmallFilmCardProps[];
+  films: PreviewFilm[];
 }
 
 export default function FilmList({films}: FilmListProps) {
-  const [activeFilm, setActiveFilm] = useState({});
+  const [activeFilm, setActiveFilm] = useState('');
+  const timer = useRef<NodeJS.Timeout>();
+
   return (
     <div className="catalog__films-list">
-      {films.map((film: SmallFilmCardProps) => (
-        <article className="small-film-card catalog__films-card" key={film.id} onMouseOver={() => {
-          setActiveFilm(film);
-          return activeFilm;
-        }}
-        >
-          <SmallFilmCard
-            id={film.id}
-            previewImage={film.previewImage}
-            name={film.name}
-            previewVideoLink={film.previewVideoLink}
-            genre={film.genre}
-          />
-        </article>
+      {films.map((film: PreviewFilm) => (
+        <SmallFilmCard
+          key={film.id}
+          id={film.id}
+          previewImage={film.previewImage}
+          name={film.name}
+          previewVideoLink={film.previewVideoLink}
+          isPlayingPreviewVideo={film.id === activeFilm}
+          onSmallFilmCardMouseOver={() => {
+            timer.current = setTimeout(() => {
+              setActiveFilm(film.id);
+            }, DEBOUNCE_TIME_FOR_PREVIEW_VIDEO);
+          }}
+          onSmallFilmCardMouseOut={() => {
+            clearTimeout(timer.current);
+            setActiveFilm('');
+          }}
+        />
       ))}
     </div>
   );
