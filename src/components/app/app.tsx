@@ -9,7 +9,17 @@ import AddReviewScreen from '../../pages/add-review-screen/add-review-screen';
 import PlayerScreen from '../../pages/player-screen/player-screen';
 import NotFoundScreen from '../../pages/not-found-screen/not-found-screen';
 import PrivateRoute from '../private-route/private-route';
-import { AppProps } from './app.props';
+import { Film } from '../../types/film';
+import { PromoFilmCardProps } from '../promo-film-card/promo-film-card';
+import { ReviewProps } from '../review/review.props';
+import { SmallFilmCardProps } from '../small-film-card/small-film-card';
+
+export type AppProps = {
+  promoFilmCard: PromoFilmCardProps;
+  smallFilmCards: SmallFilmCardProps[];
+  films: Film[];
+  reviews: ReviewProps[];
+}
 
 export default function App({promoFilmCard, smallFilmCards, films, reviews}: AppProps) {
   return (

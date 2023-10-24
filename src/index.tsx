@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './components/app/app';
-import { AppProps } from './components/app/app.props';
+import { AppProps } from './components/app/app';
 import { films } from './mocks/films';
 import { promoFilm } from './mocks/promo-film';
 import { reviews } from './mocks/reviews';
-import { SmallFilmCardProps } from './components/small-film-card/small-film-card.props';
+import { SmallFilmCardProps } from './components/small-film-card/small-film-card';
 
 const appData: AppProps = {
   promoFilmCard: promoFilm,
