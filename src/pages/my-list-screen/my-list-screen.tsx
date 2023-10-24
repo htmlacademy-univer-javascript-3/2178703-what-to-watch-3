@@ -20,9 +20,7 @@ export default function MyListScreen({smallFilmCards}: MyListScreenProps) {
       <section className="catalog">
         <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-        <div className="catalog__films-list">
-          <FilmList films={smallFilmCards} />
-        </div>
+        <FilmList films={smallFilmCards} genre='' />
       </section>
 
       <Footer />

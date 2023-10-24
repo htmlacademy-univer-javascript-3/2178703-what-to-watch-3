@@ -4,43 +4,21 @@ import { Helmet } from 'react-helmet-async';
 import { Film } from '../../types/film';
 import FilmList from '../../components/film-list/film-list';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import { AppRoute, FilmBlockLink } from '../../const';
-import { useState } from 'react';
-import FilmOverview from '../../components/film-overview/film-overview';
-import FilmDetails from '../../components/film-details/film-details';
-import FilmReviews from '../../components/film-reviews/film-reviews';
-import { ReviewProps } from '../../components/review/review.props';
-import cn from 'classnames';
+import { AppRoute } from '../../const';
 import { PreviewFilm } from '../../types/preview-film';
+import { ReviewData } from '../../types/review';
+import Tabs from '../../components/tabs/tabs';
 
 type FilmScreenProps = {
   smallFilmCards: PreviewFilm[];
   films: Film[];
-  reviews: ReviewProps[];
+  reviews: ReviewData[];
 }
 
 export default function FilmScreen({smallFilmCards, films, reviews}: FilmScreenProps) {
   const navigate = useNavigate();
   const { id } = useParams();
   const film = films.find((item) => item.id === id) as Film;
-
-  const [filmInfo, setFilmInfo] = useState(<FilmOverview film={film} />);
-  const [blockLink, setBlockLink] = useState(FilmBlockLink.Overview);
-
-  const handlerOverviewLinkClick = () => {
-    setFilmInfo(<FilmOverview film={film} />);
-    setBlockLink(FilmBlockLink.Overview);
-  };
-
-  const handlerDetailsLinkClick = () => {
-    setFilmInfo(<FilmDetails film={film} />);
-    setBlockLink(FilmBlockLink.Details);
-  };
-
-  const handlerReviewsLinkClick = () => {
-    setFilmInfo(<FilmReviews reviews={reviews} />);
-    setBlockLink(FilmBlockLink.Reviews);
-  };
 
   return (
     <>
@@ -90,24 +68,8 @@ export default function FilmScreen({smallFilmCards, films, reviews}: FilmScreenP
             <div className="film-card__poster film-card__poster--big">
               <img src={film.posterImage} alt={film.name} width="218" height="327" />
             </div>
+            <Tabs film={film} reviews={reviews} />
 
-            <div className="film-card__desc">
-              <nav className="film-nav film-card__nav">
-                <ul className="film-nav__list">
-                  <li className={cn('film-nav__item', {'film-nav__item--active': blockLink === FilmBlockLink.Overview})}>
-                    <a className="film-nav__link" onClick={handlerOverviewLinkClick}>Overview</a>
-                  </li>
-                  <li className={cn('film-nav__item', {'film-nav__item--active': blockLink === FilmBlockLink.Details})}>
-                    <a className="film-nav__link" onClick={handlerDetailsLinkClick}>Details</a>
-                  </li>
-                  <li className={cn('film-nav__item', {'film-nav__item--active': blockLink === FilmBlockLink.Reviews})}>
-                    <a className="film-nav__link" onClick={handlerReviewsLinkClick}>Reviews</a>
-                  </li>
-                </ul>
-              </nav>
-
-              {filmInfo}
-            </div>
           </div>
         </div>
       </section>
@@ -115,10 +77,7 @@ export default function FilmScreen({smallFilmCards, films, reviews}: FilmScreenP
       <div className="page-content">
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
-
-          <div className="catalog__films-list">
-            <FilmList films={smallFilmCards} />
-          </div>
+          <FilmList films={smallFilmCards} genre={film.genre} />
         </section>
 
         <Footer />

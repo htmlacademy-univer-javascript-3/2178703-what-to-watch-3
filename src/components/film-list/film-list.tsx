@@ -5,15 +5,18 @@ import { useRef, useState } from 'react';
 
 type FilmListProps = {
   films: PreviewFilm[];
+  genre: string;
 }
 
-export default function FilmList({films}: FilmListProps) {
+export default function FilmList({films, genre}: FilmListProps) {
   const [activeFilm, setActiveFilm] = useState('');
   const timer = useRef<NodeJS.Timeout>();
 
+  const filmsGenre = genre ? films.filter((film) => film.genre === genre).slice(0, 5) : films;
+
   return (
     <div className="catalog__films-list">
-      {films.map((film: PreviewFilm) => (
+      {filmsGenre.map((film: PreviewFilm) => (
         <SmallFilmCard
           key={film.id}
           id={film.id}
