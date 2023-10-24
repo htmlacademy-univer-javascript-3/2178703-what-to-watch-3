@@ -11,14 +11,14 @@ import NotFoundScreen from '../../pages/not-found-screen/not-found-screen';
 import PrivateRoute from '../private-route/private-route';
 import { Film } from '../../types/film';
 import { PromoFilmCardProps } from '../promo-film-card/promo-film-card';
-import { ReviewProps } from '../review/review';
 import { PreviewFilm } from '../../types/preview-film';
+import { ReviewData } from '../../types/review';
 
 export type AppProps = {
   promoFilmCard: PromoFilmCardProps;
   smallFilmCards: PreviewFilm[];
   films: Film[];
-  reviews: ReviewProps[];
+  reviews: ReviewData[];
 }
 
 export default function App({promoFilmCard, smallFilmCards, films, reviews}: AppProps) {
