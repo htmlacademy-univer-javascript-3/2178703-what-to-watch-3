@@ -1,6 +1,5 @@
 import Header from '../../components/header/header';
 import Footer from '../../components/footer/footer';
-import { SmallFilmCardProps } from '../../components/small-film-card/small-film-card';
 import { Helmet } from 'react-helmet-async';
 import { Film } from '../../types/film';
 import FilmList from '../../components/film-list/film-list';
@@ -12,9 +11,10 @@ import FilmDetails from '../../components/film-details/film-details';
 import FilmReviews from '../../components/film-reviews/film-reviews';
 import { ReviewProps } from '../../components/review/review.props';
 import cn from 'classnames';
+import { PreviewFilm } from '../../types/preview-film';
 
 type FilmScreenProps = {
-  smallFilmCards: SmallFilmCardProps[];
+  smallFilmCards: PreviewFilm[];
   films: Film[];
   reviews: ReviewProps[];
 }

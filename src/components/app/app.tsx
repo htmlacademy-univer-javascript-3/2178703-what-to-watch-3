@@ -12,11 +12,11 @@ import PrivateRoute from '../private-route/private-route';
 import { Film } from '../../types/film';
 import { PromoFilmCardProps } from '../promo-film-card/promo-film-card';
 import { ReviewProps } from '../review/review.props';
-import { SmallFilmCardProps } from '../small-film-card/small-film-card';
+import { PreviewFilm } from '../../types/preview-film';
 
 export type AppProps = {
   promoFilmCard: PromoFilmCardProps;
-  smallFilmCards: SmallFilmCardProps[];
+  smallFilmCards: PreviewFilm[];
   films: Film[];
   reviews: ReviewProps[];
 }

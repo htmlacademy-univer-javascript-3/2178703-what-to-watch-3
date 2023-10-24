@@ -5,11 +5,11 @@ import { AppProps } from './components/app/app';
 import { films } from './mocks/films';
 import { promoFilm } from './mocks/promo-film';
 import { reviews } from './mocks/reviews';
-import { SmallFilmCardProps } from './components/small-film-card/small-film-card';
+import { PreviewFilm } from './types/preview-film';
 
 const appData: AppProps = {
   promoFilmCard: promoFilm,
-  smallFilmCards: films.slice(1, films.length) as SmallFilmCardProps[],
+  smallFilmCards: films.slice(1, films.length) as PreviewFilm[],
   films: films,
   reviews: reviews,
 };

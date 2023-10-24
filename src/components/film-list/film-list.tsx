@@ -1,10 +1,10 @@
 import { DEBOUNCE_TIME_FOR_PREVIEW_VIDEO } from '../../const';
-import { SmallFilmCardProps } from '../small-film-card/small-film-card';
+import { PreviewFilm } from '../../types/preview-film';
 import SmallFilmCard from '../small-film-card/small-film-card';
 import { useRef, useState } from 'react';
 
 type FilmListProps = {
-  films: SmallFilmCardProps[];
+  films: PreviewFilm[];
 }
 
 export default function FilmList({films}: FilmListProps) {
@@ -13,7 +13,7 @@ export default function FilmList({films}: FilmListProps) {
 
   return (
     <div className="catalog__films-list">
-      {films.map((film: SmallFilmCardProps) => (
+      {films.map((film: PreviewFilm) => (
         <SmallFilmCard
           key={film.id}
           id={film.id}

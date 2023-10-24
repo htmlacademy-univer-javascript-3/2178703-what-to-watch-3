@@ -1,13 +1,13 @@
-import { SmallFilmCardProps } from '../../components/small-film-card/small-film-card';
 import PromoFilmCard from '../../components/promo-film-card/promo-film-card';
 import { PromoFilmCardProps } from '../../components/promo-film-card/promo-film-card';
 import Footer from '../../components/footer/footer';
 import { Helmet } from 'react-helmet-async';
 import FilmList from '../../components/film-list/film-list';
+import { PreviewFilm } from '../../types/preview-film';
 
 type MainScreenProps = {
   promoFilmCard: PromoFilmCardProps;
-  smallFilmCards: SmallFilmCardProps[];
+  smallFilmCards: PreviewFilm[];
 }
 
 export default function MainScreen({promoFilmCard, smallFilmCards}: MainScreenProps) {
