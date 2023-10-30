@@ -62,7 +62,7 @@ export default function MainScreen({promoFilmCard, smallFilmCards}: MainScreenPr
             </li>
           </ul>
 
-          <FilmList films={smallFilmCards} />
+          <FilmList films={smallFilmCards} genre='' />
 
           <div className="catalog__more">
             <button className="catalog__button" type="button">Show more</button>
