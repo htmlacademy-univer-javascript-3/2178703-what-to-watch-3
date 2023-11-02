@@ -1,6 +1,6 @@
 export const reviews = [
   {
-    idFilm: '2',
+    filmId: '2',
     id: '0',
     date: 'December 24, 2016',
     user: 'Kate Muir',
@@ -8,7 +8,7 @@ export const reviews = [
     rating: 8.9,
   },
   {
-    idFilm: '1',
+    filmId: '1',
     id: '1',
     date: 'November 18, 2015',
     user: 'Bill Goodykoontz',
@@ -16,7 +16,7 @@ export const reviews = [
     rating: 8.0,
   },
   {
-    idFilm: '3',
+    filmId: '3',
     id: '2',
     date: 'November 18, 2015',
     user: 'Amanda Greever',
@@ -24,7 +24,7 @@ export const reviews = [
     rating: 8.0,
   },
   {
-    idFilm: '5',
+    filmId: '5',
     id: '3',
     date: 'December 24, 2016',
     user: 'Kate Muir',
@@ -32,7 +32,7 @@ export const reviews = [
     rating: 6.9,
   },
   {
-    idFilm: '5',
+    filmId: '5',
     id: '4',
     date: 'November 18, 2015',
     user: 'Bill Goodykoontz',
@@ -40,7 +40,7 @@ export const reviews = [
     rating: 2.0,
   },
   {
-    idFilm: '3',
+    filmId: '3',
     id: '5',
     date: 'November 18, 2015',
     user: 'Amanda Greever',
@@ -48,7 +48,7 @@ export const reviews = [
     rating: 1.0,
   },
   {
-    idFilm: '7',
+    filmId: '7',
     id: '6',
     date: 'December 24, 2016',
     user: 'Kate Muir',
@@ -56,7 +56,7 @@ export const reviews = [
     rating: 7.9,
   },
   {
-    idFilm: '1',
+    filmId: '1',
     id: '7',
     date: 'November 18, 2015',
     user: 'Bill Goodykoontz',
@@ -64,7 +64,7 @@ export const reviews = [
     rating: 9.0,
   },
   {
-    idFilm: '7',
+    filmId: '7',
     id: '8',
     date: 'November 18, 2015',
     user: 'Amanda Greever',
@@ -72,7 +72,7 @@ export const reviews = [
     rating: 10.0,
   },
   {
-    idFilm: '7',
+    filmId: '7',
     id: '9',
     date: 'December 24, 2016',
     user: 'Kate Muir',
@@ -80,7 +80,7 @@ export const reviews = [
     rating: 2.9,
   },
   {
-    idFilm: '6',
+    filmId: '6',
     id: '10',
     date: 'November 18, 2015',
     user: 'Bill Goodykoontz',
@@ -88,7 +88,7 @@ export const reviews = [
     rating: 3.0,
   },
   {
-    idFilm: '4',
+    filmId: '4',
     id: '11',
     date: 'November 18, 2015',
     user: 'Amanda Greever',
@@ -96,7 +96,7 @@ export const reviews = [
     rating: 8.0,
   },
   {
-    idFilm: '2',
+    filmId: '2',
     id: '12',
     date: 'December 24, 2016',
     user: 'Kate Muir',
@@ -104,7 +104,7 @@ export const reviews = [
     rating: 8.9,
   },
   {
-    idFilm: '2',
+    filmId: '2',
     id: '13',
     date: 'November 18, 2015',
     user: 'Bill Goodykoontz',
@@ -112,7 +112,7 @@ export const reviews = [
     rating: 3.0,
   },
   {
-    idFilm: '8',
+    filmId: '8',
     id: '14',
     date: 'November 18, 2015',
     user: 'Amanda Greever',

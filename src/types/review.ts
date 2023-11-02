@@ -1,5 +1,5 @@
 export type ReviewData = {
-  idFilm: string;
+  filmId: string;
   id: string;
   date: string;
   user: string;

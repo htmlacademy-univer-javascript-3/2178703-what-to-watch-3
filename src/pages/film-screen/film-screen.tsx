@@ -4,10 +4,11 @@ import { Helmet } from 'react-helmet-async';
 import { Film } from '../../types/film';
 import FilmList from '../../components/film-list/film-list';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import { AppRoute } from '../../const';
+import { AppRoute, FILM_SAME_GENRE_COUNT } from '../../const';
 import { PreviewFilm } from '../../types/preview-film';
 import { ReviewData } from '../../types/review';
 import Tabs from '../../components/tabs/tabs';
+import { getFilmsByGenre } from '../../utils/get-films-by-genre';
 
 type FilmScreenProps = {
   smallFilmCards: PreviewFilm[];
@@ -77,7 +78,7 @@ export default function FilmScreen({smallFilmCards, films, reviews}: FilmScreenP
       <div className="page-content">
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
-          <FilmList films={smallFilmCards} genre={film.genre} />
+          <FilmList films={getFilmsByGenre(smallFilmCards, film.genre)} filmCount={FILM_SAME_GENRE_COUNT} />
         </section>
 
         <Footer />

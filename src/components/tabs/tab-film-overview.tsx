@@ -1,4 +1,4 @@
-import { getFilmRating } from '../../functions/get-film-rating';
+import { getFilmRating } from '../../utils/get-film-rating';
 
 type FilmOverviewProps = {
   description: string;

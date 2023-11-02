@@ -1,4 +1,4 @@
-import { getRunTime } from '../../functions/get-run-time';
+import { getRunTime } from '../../utils/get-run-time';
 
 type FilmDetailsProps = {
   director: string;

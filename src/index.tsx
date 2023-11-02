@@ -6,6 +6,8 @@ import { films } from './mocks/films';
 import { promoFilm } from './mocks/promo-film';
 import { reviews } from './mocks/reviews';
 import { PreviewFilm } from './types/preview-film';
+import { Provider } from 'react-redux';
+import { store } from './store';
 
 const appData: AppProps = {
   promoFilmCard: promoFilm,
@@ -20,11 +22,13 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <App
-      promoFilmCard={appData.promoFilmCard}
-      smallFilmCards={appData.smallFilmCards}
-      films={appData.films}
-      reviews={appData.reviews}
-    />
+    <Provider store={store}>
+      <App
+        promoFilmCard={appData.promoFilmCard}
+        smallFilmCards={appData.smallFilmCards}
+        films={appData.films}
+        reviews={appData.reviews}
+      />
+    </Provider>
   </React.StrictMode>
 );

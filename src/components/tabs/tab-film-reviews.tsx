@@ -2,12 +2,12 @@ import Review from '../review/review';
 import { ReviewData } from '../../types/review';
 
 type FilmReviewsProps = {
-  idFilm: string;
+  filmId: string;
   reviews: ReviewData[];
 }
 
-export default function FilmReviews({idFilm, reviews}: FilmReviewsProps) {
-  const reviewsFilm = reviews.filter((review) => review.idFilm === idFilm);
+export default function FilmReviews({filmId, reviews}: FilmReviewsProps) {
+  const reviewsFilm = reviews.filter((review) => review.filmId === filmId);
   return (
     <div className="film-card__reviews film-card__row">
       <div className="film-card__reviews-col">
