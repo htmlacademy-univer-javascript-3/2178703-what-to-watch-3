@@ -1,8 +1,3 @@
-// type ShowMoreFilmButtonProps = {
-//   shownFilmCount: number;
-//   filmCount: number;
-// }
-
 import { useAppDispatch } from '../../hooks';
 import { changeShownFilmCount } from '../../store/action';
 

@@ -11,11 +11,11 @@ type FilmListProps = {
 export default function FilmList({films, filmCount}: FilmListProps) {
   const [activeFilm, setActiveFilm] = useState('');
   const timer = useRef<NodeJS.Timeout>();
-  const filmsSlice = filmCount ? films.slice(0, filmCount) : films;
+  const sliceFilms = filmCount ? films.slice(0, filmCount) : films;
 
   return (
     <div className="catalog__films-list">
-      {filmsSlice.map((film: PreviewFilm) => (
+      {sliceFilms.map((film: PreviewFilm) => (
         <SmallFilmCard
           key={film.id}
           id={film.id}
