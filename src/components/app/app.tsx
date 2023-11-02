@@ -28,7 +28,7 @@ export default function App({promoFilmCard, smallFilmCards, films, reviews}: App
         <Routes>
           <Route
             path={AppRoute.Main}
-            element={<MainScreen promoFilmCard={promoFilmCard} smallFilmCards={smallFilmCards} />}
+            element={<MainScreen promoFilmCard={promoFilmCard} />}
           />
           <Route
             path={AppRoute.SignIn}
