@@ -26,7 +26,6 @@ export default function MainScreen({promoFilmCard}: MainScreenProps) {
 
   const shownFilmCount = useAppSelector((state) => state.shownFilmCount);
 
-
   return (
     <>
       <Helmet>
