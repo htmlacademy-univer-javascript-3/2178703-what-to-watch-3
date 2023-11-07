@@ -47,7 +47,7 @@ export default function App({promoFilmCard, smallFilmCards, films, reviews}: App
           <Route path={AppRoute.FilmData}>
             <Route index element={<NotFoundScreen />} />
             <Route path=':id'>
-              <Route index element={<FilmScreen smallFilmCards={smallFilmCards} films={films} reviews={reviews} />} />
+              <Route index element={<FilmScreen films={films} reviews={reviews} />} />
               <Route path='review' element={<AddReviewScreen films={films}/>} />
             </Route>
           </Route>

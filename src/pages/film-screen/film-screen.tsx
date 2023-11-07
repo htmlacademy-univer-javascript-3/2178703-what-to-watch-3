@@ -5,18 +5,16 @@ import { Film } from '../../types/film';
 import FilmList from '../../components/film-list/film-list';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { AppRoute, FILM_SAME_GENRE_COUNT } from '../../const';
-import { PreviewFilm } from '../../types/preview-film';
 import { ReviewData } from '../../types/review';
 import Tabs from '../../components/tabs/tabs';
-import { getFilmsByGenre } from '../../utils/get-films-by-genre';
+import { useFilmsByGenre } from '../../hooks/films-by-genre';
 
 type FilmScreenProps = {
-  smallFilmCards: PreviewFilm[];
   films: Film[];
   reviews: ReviewData[];
 }
 
-export default function FilmScreen({smallFilmCards, films, reviews}: FilmScreenProps) {
+export default function FilmScreen({films, reviews}: FilmScreenProps) {
   const navigate = useNavigate();
   const { id } = useParams();
   const film = films.find((item) => item.id === id) as Film;
@@ -26,7 +24,7 @@ export default function FilmScreen({smallFilmCards, films, reviews}: FilmScreenP
       <Helmet>
         <title>WTW. {film.name}</title>
       </Helmet>
-      <section className="film-card film-card--full">
+      <section className="film-card film-card--full" style={{background: film.backgroundColor}}>
         <div className="film-card__hero">
           <div className="film-card__bg">
             <img src={film.backgroundImage} alt={film.name} />
@@ -78,7 +76,7 @@ export default function FilmScreen({smallFilmCards, films, reviews}: FilmScreenP
       <div className="page-content">
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
-          <FilmList films={getFilmsByGenre(smallFilmCards, film.genre)} filmCount={FILM_SAME_GENRE_COUNT} />
+          <FilmList films={useFilmsByGenre(film.genre)} filmCount={FILM_SAME_GENRE_COUNT} />
         </section>
 
         <Footer />

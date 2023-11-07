@@ -3,28 +3,23 @@ import { PromoFilmCardProps } from '../../components/promo-film-card/promo-film-
 import Footer from '../../components/footer/footer';
 import { Helmet } from 'react-helmet-async';
 import FilmList from '../../components/film-list/film-list';
-import { PreviewFilm } from '../../types/preview-film';
-import { getGenreList } from '../../utils/get-genre-list';
 import GenreList from '../../components/genre-list/genre-list';
-import { useAppDispatch, useAppSelector } from '../../hooks';
+import { useAppSelector } from '../../hooks';
 import ShowMoreFilmButton from '../../components/show-more-film-button/show-more-film-button';
-import { setDefaultShownFilmCount } from '../../store/action';
-import { useEffect } from 'react';
+import { useState } from 'react';
+import { useFilmsByGenre } from '../../hooks/films-by-genre';
+import { SHOWN_FILM_COUNT } from '../../const';
+import { getGenreList } from '../../utils/get-genre-list';
 
 type MainScreenProps = {
   promoFilmCard: PromoFilmCardProps;
 }
 
 export default function MainScreen({promoFilmCard}: MainScreenProps) {
-  const filmsByGenre = useAppSelector((state) => state.filmsByGenre);
+  const activeGenre = useAppSelector((state) => state.genre);
   const films = useAppSelector((state) => state.films);
-  const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    dispatch(setDefaultShownFilmCount());
-  }, [dispatch]);
-
-  const shownFilmCount = useAppSelector((state) => state.shownFilmCount);
+  const [shownFilmCount, setShownFilmCount] = useState(SHOWN_FILM_COUNT);
+  const filmsByGenre = useFilmsByGenre(activeGenre);
 
   return (
     <>
@@ -43,10 +38,10 @@ export default function MainScreen({promoFilmCard}: MainScreenProps) {
       <div className="page-content">
         <section className="catalog">
           <h2 className="catalog__title visually-hidden">Catalog</h2>
-          <GenreList genres={getGenreList(films as PreviewFilm[])}/>
+          <GenreList genres={getGenreList(films)} onGenreClick={() => setShownFilmCount(SHOWN_FILM_COUNT)}/>
 
-          <FilmList films={filmsByGenre as PreviewFilm[]} filmCount={shownFilmCount}/>
-          {shownFilmCount < filmsByGenre.length && <ShowMoreFilmButton />}
+          <FilmList films={filmsByGenre} filmCount={shownFilmCount}/>
+          {shownFilmCount < filmsByGenre.length && <ShowMoreFilmButton onShowMoreFilmButtonClick={() => setShownFilmCount(shownFilmCount + SHOWN_FILM_COUNT)} />}
         </section>
 
         <Footer />
