@@ -1,11 +1,11 @@
-import { useAppDispatch } from '../../hooks';
-import { changeShownFilmCount } from '../../store/action';
+type ShowMoreFilmButtonProps = {
+  onShowMoreFilmButtonClick: () => void;
+}
 
-export default function ShowMoreFilmButton() {
-  const dispatch = useAppDispatch();
+export default function ShowMoreFilmButton({onShowMoreFilmButtonClick}: ShowMoreFilmButtonProps) {
   return(
     <div className="catalog__more">
-      <button onClick={() => dispatch(changeShownFilmCount())} className="catalog__button" type="button">Show more</button>
+      <button onClick={onShowMoreFilmButtonClick} className="catalog__button" type="button">Show more</button>
     </div>
   );
 }

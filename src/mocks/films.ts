@@ -1,7 +1,9 @@
 export const films = [
   {
     id: '0',
+    previewImage: 'img/the-grand-budapest-hotel-poster.jpg',
     name: 'The Grand Budapest Hotel',
+    previewVideoLink: 'https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm',
     posterImage: 'img/the-grand-budapest-hotel-poster.jpg',
     backgroundImage: 'img/bg-the-grand-budapest-hotel.jpg',
     backgroundColor: '#e1b0b2',
