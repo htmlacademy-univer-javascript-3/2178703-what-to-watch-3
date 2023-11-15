@@ -1,5 +1,5 @@
-import { Route, BrowserRouter, Routes } from 'react-router-dom';
-import { AppRoute, AuthorizationStatus } from '../../const';
+import { Route, Routes } from 'react-router-dom';
+import { AppRoute } from '../../const';
 import { HelmetProvider } from 'react-helmet-async';
 import MainScreen from '../../pages/main-screen/main-screen';
 import SignInScreen from '../../pages/sign-in-screen/sign-in-screen';
@@ -15,6 +15,8 @@ import { PreviewFilm } from '../../types/preview-film';
 import { ReviewData } from '../../types/review';
 import { useAppSelector } from '../../hooks';
 import LoadingScreen from '../../pages/loading-screen/loading-screen';
+import HistoryRouter from '../history-route/history-routr';
+import browserHistory from '../../browser-history';
 
 export type AppProps = {
   promoFilmCard: PromoFilmCardProps;
@@ -25,6 +27,7 @@ export type AppProps = {
 
 export default function App({promoFilmCard, smallFilmCards, films, reviews}: AppProps) {
   const isFilmsDataLoading = useAppSelector((state) => state.isFilmsDataLoading);
+  const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
 
   if (isFilmsDataLoading) {
     return (
@@ -33,7 +36,7 @@ export default function App({promoFilmCard, smallFilmCards, films, reviews}: App
   }
   return (
     <HelmetProvider>
-      <BrowserRouter>
+      <HistoryRouter history={browserHistory}>
         <Routes>
           <Route
             path={AppRoute.Main}
@@ -47,7 +50,7 @@ export default function App({promoFilmCard, smallFilmCards, films, reviews}: App
             path={AppRoute.MyList}
             element={
               <PrivateRoute
-                authorizationStatus={AuthorizationStatus.NoAuth}
+                authorizationStatus={authorizationStatus}
               >
                 <MyListScreen smallFilmCards={smallFilmCards} />
               </PrivateRoute>
@@ -69,7 +72,7 @@ export default function App({promoFilmCard, smallFilmCards, films, reviews}: App
             element={<NotFoundScreen />}
           />
         </Routes>
-      </BrowserRouter>
+      </HistoryRouter>
     </HelmetProvider>
   );
 }
