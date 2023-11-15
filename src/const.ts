@@ -12,6 +12,10 @@ export const AppRoute = {
   Player: '/player',
 };
 
+export const APIRoute = {
+  Films: '/films',
+};
+
 export enum AuthorizationStatus {
   Auth = 'AUTH',
   NoAuth = 'NO_AUTH',

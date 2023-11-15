@@ -13,6 +13,8 @@ import { Film } from '../../types/film';
 import { PromoFilmCardProps } from '../promo-film-card/promo-film-card';
 import { PreviewFilm } from '../../types/preview-film';
 import { ReviewData } from '../../types/review';
+import { useAppSelector } from '../../hooks';
+import LoadingScreen from '../../pages/loading-screen/loading-screen';
 
 export type AppProps = {
   promoFilmCard: PromoFilmCardProps;
@@ -22,6 +24,13 @@ export type AppProps = {
 }
 
 export default function App({promoFilmCard, smallFilmCards, films, reviews}: AppProps) {
+  const isFilmsDataLoading = useAppSelector((state) => state.isFilmsDataLoading);
+
+  if (isFilmsDataLoading) {
+    return (
+      <LoadingScreen />
+    );
+  }
   return (
     <HelmetProvider>
       <BrowserRouter>
