@@ -1,5 +1,5 @@
-import { Route, BrowserRouter, Routes } from 'react-router-dom';
-import { AppRoute, AuthorizationStatus } from '../../const';
+import { Route, Routes } from 'react-router-dom';
+import { AppRoute } from '../../const';
 import { HelmetProvider } from 'react-helmet-async';
 import MainScreen from '../../pages/main-screen/main-screen';
 import SignInScreen from '../../pages/sign-in-screen/sign-in-screen';
@@ -12,19 +12,29 @@ import PrivateRoute from '../private-route/private-route';
 import { Film } from '../../types/film';
 import { PromoFilmCardProps } from '../promo-film-card/promo-film-card';
 import { PreviewFilm } from '../../types/preview-film';
-import { ReviewData } from '../../types/review';
+import { useAppSelector } from '../../hooks';
+import LoadingScreen from '../../pages/loading-screen/loading-screen';
+import HistoryRouter from '../history-route/history-routr';
+import browserHistory from '../../browser-history';
 
 export type AppProps = {
   promoFilmCard: PromoFilmCardProps;
   smallFilmCards: PreviewFilm[];
   films: Film[];
-  reviews: ReviewData[];
 }
 
-export default function App({promoFilmCard, smallFilmCards, films, reviews}: AppProps) {
+export default function App({promoFilmCard, smallFilmCards, films}: AppProps) {
+  const isFilmsDataLoading = useAppSelector((state) => state.isFilmsDataLoading);
+  const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
+
+  if (isFilmsDataLoading) {
+    return (
+      <LoadingScreen />
+    );
+  }
   return (
     <HelmetProvider>
-      <BrowserRouter>
+      <HistoryRouter history={browserHistory}>
         <Routes>
           <Route
             path={AppRoute.Main}
@@ -38,7 +48,7 @@ export default function App({promoFilmCard, smallFilmCards, films, reviews}: App
             path={AppRoute.MyList}
             element={
               <PrivateRoute
-                authorizationStatus={AuthorizationStatus.NoAuth}
+                authorizationStatus={authorizationStatus}
               >
                 <MyListScreen smallFilmCards={smallFilmCards} />
               </PrivateRoute>
@@ -47,8 +57,8 @@ export default function App({promoFilmCard, smallFilmCards, films, reviews}: App
           <Route path={AppRoute.FilmData}>
             <Route index element={<NotFoundScreen />} />
             <Route path=':id'>
-              <Route index element={<FilmScreen films={films} reviews={reviews} />} />
-              <Route path='review' element={<AddReviewScreen films={films}/>} />
+              <Route index element={<FilmScreen />} />
+              <Route path='review' element={<AddReviewScreen />} />
             </Route>
           </Route>
           <Route path={AppRoute.Player}>
@@ -60,7 +70,7 @@ export default function App({promoFilmCard, smallFilmCards, films, reviews}: App
             element={<NotFoundScreen />}
           />
         </Routes>
-      </BrowserRouter>
+      </HistoryRouter>
     </HelmetProvider>
   );
 }

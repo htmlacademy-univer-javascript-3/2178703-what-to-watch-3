@@ -4,12 +4,19 @@ export const FILM_SAME_GENRE_COUNT = 4;
 export const SHOWN_FILM_COUNT = 8;
 export const DEFAULT_GENRE = 'All genres';
 
-export const AppRoute = {
-  Main: '/',
-  SignIn: '/login',
-  MyList: '/mylist',
-  FilmData: '/films',
-  Player: '/player',
+export enum AppRoute {
+  Main = '/',
+  SignIn = '/login',
+  MyList = '/mylist',
+  FilmData = '/films',
+  Player = '/player',
+}
+
+export const APIRoute = {
+  Films: '/films',
+  Login: '/login',
+  Logout: '/logout',
+  Comments: '/comments',
 };
 
 export enum AuthorizationStatus {

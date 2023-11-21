@@ -1,7 +1,14 @@
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, FormEvent, useState } from 'react';
 import { RATING_STAR_COUNT } from '../../const';
+import { useAppDispatch } from '../../hooks';
+import { postReview } from '../../store/api-actions';
 
-export default function FormReview() {
+type FormReviewProps = {
+  filmId: string;
+}
+
+export default function FormReview({filmId}: FormReviewProps) {
+  const dispatch = useAppDispatch();
   const [rating, setRating] = useState('');
   const [reviewText, setReviewText] = useState('');
 
@@ -13,45 +20,57 @@ export default function FormReview() {
     setReviewText(evt.target.value);
   };
 
+  function handleFormSubmit(evt: FormEvent<HTMLFormElement>) {
+    evt.preventDefault();
+    setRating(rating);
+    setReviewText(reviewText);
+    dispatch(
+      postReview({
+        id: filmId,
+        comment: reviewText,
+        rating: Number(rating),
+      })
+    );
+  }
+
   return (
     <div className="add-review">
-      <form action="#" className="add-review__form">
+      <form action="#" className="add-review__form" onSubmit={handleFormSubmit}>
         <div className="rating">
           <div className="rating__stars">
             {Array.from({ length: RATING_STAR_COUNT }, (_, i) => i + 1)
               .reverse()
-              .map((number) => (
-                <>
-                  <input
-                    key={`star-${number}`}
-                    className="rating__input"
-                    onChange={handleRatingChange}
-                    id={`star-${number}`}
-                    type="radio"
-                    name="rating"
-                    value={`${number}`}
-                    checked={`${number}` === rating}
-                  />
-                  <label
-                    className="rating__label"
-                    htmlFor={`star-${number}`}
-                  >
-                    Rating {number}
-                  </label>
-                </>
-              ))}
+              .map((number) => [
+                <input
+                  key={`input-star-${number}`}
+                  className="rating__input"
+                  onChange={handleRatingChange}
+                  id={`star-${number}`}
+                  type="radio"
+                  name="rating"
+                  value={`${number}`}
+                  checked={`${number}` === rating}
+                />,
+                <label
+                  key={`label-star-${number}`}
+                  className="rating__label"
+                  htmlFor={`star-${number}`}
+                >
+                  Rating {number}
+                </label>
+              ])}
           </div>
         </div>
 
         <div className="add-review__text">
           <textarea
+            value={reviewText}
             className="add-review__textarea"
             name="review-text"
             id="review-text"
             placeholder="Review text"
             onChange={handleReviewChange}
           >
-            {reviewText}
           </textarea>
           <div className="add-review__submit">
             <button className="add-review__btn" type="submit">Post</button>
