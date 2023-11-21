@@ -9,10 +9,11 @@ type DetailMessageType = {
 }
 const StatusCodeMapping: Record<number, boolean> = {
   [StatusCodes.BAD_REQUEST]: true,
-  [StatusCodes.UNAUTHORIZED]: false,
   [StatusCodes.NOT_FOUND]: true
 };
 const shouldDisplayError = (response: AxiosResponse) => !!StatusCodeMapping[response.status];
+
+const shouldUnauthorizedError = () => StatusCodes.UNAUTHORIZED;
 
 const BACKEND_URL = 'https://13.design.pages.academy/wtw';
 const REQUEST_TIMEOUT = 5000;
@@ -37,6 +38,8 @@ export const createAPI = (): AxiosInstance => {
       if (error.response && shouldDisplayError(error.response)) {
         const detailMessage = (error.response.data);
         toast.warn(detailMessage.message);
+      }
+      if (error.response && shouldUnauthorizedError()) {
         dropToken();
       }
       throw error;
