@@ -5,7 +5,7 @@ import { Film } from '../../types/film';
 import FilmOverview from './tab-film-overview';
 import FilmDetails from './tab-film-details';
 import FilmReviews from './tab-film-reviews';
-import { ReviewData } from '../../types/review';
+import { ReviewData } from '../../types/review-data';
 
 type TabsProps = {
   film: Film;
@@ -34,7 +34,7 @@ const getFilmActiveTabInfo = (activeTab: string, film: Film, reviews: ReviewData
         />);
     case FilmTab.Reviews:
       return(
-        <FilmReviews filmId={film.id} reviews={reviews} />
+        <FilmReviews reviews={reviews} />
       );
     default:
       break;

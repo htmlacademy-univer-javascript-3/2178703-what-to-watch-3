@@ -4,7 +4,6 @@ import App from './components/app/app';
 import { AppProps } from './components/app/app';
 import { films } from './mocks/films';
 import { promoFilm } from './mocks/promo-film';
-import { reviews } from './mocks/reviews';
 import { PreviewFilm } from './types/preview-film';
 import { Provider } from 'react-redux';
 import { store } from './store';
@@ -19,7 +18,6 @@ const appData: AppProps = {
   promoFilmCard: promoFilm,
   smallFilmCards: films.slice(1, films.length) as PreviewFilm[],
   films: films,
-  reviews: reviews,
 };
 
 const root = ReactDOM.createRoot(
@@ -34,7 +32,6 @@ root.render(
         promoFilmCard={appData.promoFilmCard}
         smallFilmCards={appData.smallFilmCards}
         films={appData.films}
-        reviews={appData.reviews}
       />
     </Provider>
   </React.StrictMode>

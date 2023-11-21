@@ -16,6 +16,7 @@ export const APIRoute = {
   Films: '/films',
   Login: '/login',
   Logout: '/logout',
+  Comments: '/comments',
 };
 
 export enum AuthorizationStatus {

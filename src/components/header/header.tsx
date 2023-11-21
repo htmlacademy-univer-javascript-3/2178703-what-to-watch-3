@@ -19,12 +19,18 @@ const getUserBlock = (authorizationStatus: AuthorizationStatus) => {
         </li>
       </ul>
     );
+  } else if (authorizationStatus === AuthorizationStatus.NoAuth) {
+    return (
+      <ul className="user-block">
+        <li className="user-block__item">
+          <Link className="user-block__link" to={AppRoute.SignIn}>Sign in</Link>
+        </li>
+      </ul>
+    );
   }
   return (
     <ul className="user-block">
-      <li className="user-block__item">
-        <Link className="user-block__link" to={AppRoute.SignIn}>Sign in</Link>
-      </li>
+      <li className="user-block__item"></li>
     </ul>
   );
 };
@@ -45,4 +51,3 @@ export default function Header() {
     </header>
   );
 }
-
