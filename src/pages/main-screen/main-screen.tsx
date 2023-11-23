@@ -1,31 +1,44 @@
 import PromoFilmCard from '../../components/promo-film-card/promo-film-card';
-import { PromoFilmCardProps } from '../../components/promo-film-card/promo-film-card';
 import Footer from '../../components/footer/footer';
 import { Helmet } from 'react-helmet-async';
 import FilmList from '../../components/film-list/film-list';
 import GenreList from '../../components/genre-list/genre-list';
-import { useAppSelector } from '../../hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks';
 import ShowMoreFilmButton from '../../components/show-more-film-button/show-more-film-button';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useFilmsByGenre } from '../../hooks/films-by-genre';
 import { SHOWN_FILM_COUNT } from '../../const';
 import { getGenreList } from '../../utils/get-genre-list';
+import { getActiveGenre } from '../../store/genre-process/selectors';
+import { getFilms, getPromoFilm, getPromoFilmLoading } from '../../store/film-data/selectors';
+import { fetchPromoFilmAction } from '../../store/api-actions';
+import LoadingScreen from '../loading-screen/loading-screen';
 
-type MainScreenProps = {
-  promoFilmCard: PromoFilmCardProps;
-}
-
-export default function MainScreen({promoFilmCard}: MainScreenProps) {
-  const activeGenre = useAppSelector((state) => state.genre);
-  const films = useAppSelector((state) => state.films);
+export default function MainScreen() {
+  const dispatch = useAppDispatch();
+  const activeGenre = useAppSelector(getActiveGenre);
+  const films = useAppSelector(getFilms);
   const [shownFilmCount, setShownFilmCount] = useState(SHOWN_FILM_COUNT);
   const filmsByGenre = useFilmsByGenre(activeGenre);
+  const promoFilmCard = useAppSelector(getPromoFilm);
+  const isPromoFilmLoading = useAppSelector(getPromoFilmLoading);
+
+  useEffect(() => {
+    dispatch(fetchPromoFilmAction());
+  }, [dispatch]);
+
+  if(isPromoFilmLoading) {
+    return(
+      <LoadingScreen />
+    );
+  }
 
   return (
     <>
       <Helmet>
         <title>WTW</title>
       </Helmet>
+      {promoFilmCard &&
       <PromoFilmCard
         id={promoFilmCard.id}
         posterImage={promoFilmCard.posterImage}
@@ -33,7 +46,8 @@ export default function MainScreen({promoFilmCard}: MainScreenProps) {
         genre={promoFilmCard.genre}
         released={promoFilmCard.released}
         backgroundImage={promoFilmCard.backgroundImage}
-      />
+        isFavorite={promoFilmCard.isFavorite}
+      />}
 
       <div className="page-content">
         <section className="catalog">

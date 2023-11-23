@@ -1,9 +1,9 @@
-import Header from '../../components/header/header';
 import Footer from '../../components/footer/footer';
 import { Helmet } from 'react-helmet-async';
 import { useRef, FormEvent } from 'react';
 import { useAppDispatch } from '../../hooks';
 import { loginAction } from '../../store/api-actions';
+import HeaderLogo from '../../components/header-logo/header-logo';
 
 
 export default function SignInScreen() {
@@ -28,7 +28,10 @@ export default function SignInScreen() {
       <Helmet>
         <title>WTW. Sign in</title>
       </Helmet>
-      <Header />
+      <header className="page-header user-page__head">
+        <HeaderLogo />
+        <h1 className="page-title user-page__title">Sign in</h1>
+      </header>
 
       <div className="sign-in user-page__content">
         <form

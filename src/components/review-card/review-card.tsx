@@ -1,6 +1,6 @@
 import { getAltDate, humanizeDate } from '../../utils/change-date-format';
 
-export type ReviewProps = {
+export type ReviewCardProps = {
   date: string;
   user: string;
   comment: string;
@@ -8,7 +8,7 @@ export type ReviewProps = {
   }
 
 
-export default function Review({date, user, comment, rating}: ReviewProps) {
+export default function ReviewCard({date, user, comment, rating}: ReviewCardProps) {
   return(
     <div className="review">
       <blockquote className="review__quote">
