@@ -15,7 +15,6 @@ export default function ChangeFavoriteStatusButton({filmId, isFavorite, favorite
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const [isCurrentFavorite, setCurrentFavorite] = useState(isFavorite);
-  const [currentFavoriteFilmCount, setCurrentFavoriteFilmCount] = useState(favoriteFilmCount);
 
   return(
     <button
@@ -28,11 +27,6 @@ export default function ChangeFavoriteStatusButton({filmId, isFavorite, favorite
             status: Number(!isCurrentFavorite),
           }));
           setCurrentFavorite(!isCurrentFavorite);
-          if (isCurrentFavorite) {
-            setCurrentFavoriteFilmCount(currentFavoriteFilmCount - 1);
-          } else {
-            setCurrentFavoriteFilmCount(currentFavoriteFilmCount + 1);
-          }
         } else {
           navigate(`${AppRoute.SignIn}`);
         }
@@ -49,7 +43,7 @@ export default function ChangeFavoriteStatusButton({filmId, isFavorite, favorite
       )}
 
       <span>My list</span>
-      <span className="film-card__count">{authorizationStatus === AuthorizationStatus.Auth ? currentFavoriteFilmCount : 0}</span>
+      <span className="film-card__count">{authorizationStatus === AuthorizationStatus.Auth ? favoriteFilmCount : 0}</span>
     </button>
   );
 }

@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { NameSpace } from '../../const';
 import { MyFilmProcess } from '../../types/state';
-import { fetchFavoriteFilmsAction } from '../api-actions';
+import { fetchFavoriteFilmsAction, postFilmFavoriteStatus } from '../api-actions';
 
 const initialState: MyFilmProcess = {
   favoriteFilms: [],
@@ -22,6 +22,14 @@ export const myListProcess = createSlice({
         state.favoriteFilms = action.payload;
         state.favoriteFilmCount = action.payload.length;
         state.isFavoriteFilmsLoading = false;
+      })
+      .addCase(postFilmFavoriteStatus.fulfilled, (state, action) => {
+        const film = action.payload;
+        if(film.isFavorite) {
+          state.favoriteFilmCount++;
+        } else {
+          state.favoriteFilmCount--;
+        }
       });
   }
 });

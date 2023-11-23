@@ -11,7 +11,7 @@ import { SHOWN_FILM_COUNT } from '../../const';
 import { getGenreList } from '../../utils/get-genre-list';
 import { getActiveGenre } from '../../store/genre-process/selectors';
 import { getFilms, getPromoFilm, getPromoFilmLoading } from '../../store/film-data/selectors';
-import { fetchFavoriteFilmsAction, fetchPromoFilmAction } from '../../store/api-actions';
+import { fetchPromoFilmAction } from '../../store/api-actions';
 import LoadingScreen from '../loading-screen/loading-screen';
 
 export default function MainScreen() {
@@ -25,7 +25,6 @@ export default function MainScreen() {
 
   useEffect(() => {
     dispatch(fetchPromoFilmAction());
-    dispatch(fetchFavoriteFilmsAction());
   }, [dispatch]);
 
   if(isPromoFilmLoading) {

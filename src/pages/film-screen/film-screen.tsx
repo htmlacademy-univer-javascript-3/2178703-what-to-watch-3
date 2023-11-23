@@ -6,7 +6,7 @@ import Tabs from '../../components/tabs/tabs';
 import useFilmById from '../../hooks/film-by-id';
 import LoadingScreen from '../loading-screen/loading-screen';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { fetchFavoriteFilmsAction, fetchFilmReviewsAction, fetchSimilarFilmsAction } from '../../store/api-actions';
+import { fetchFilmReviewsAction, fetchSimilarFilmsAction } from '../../store/api-actions';
 import { useEffect } from 'react';
 import FilmList from '../../components/film-list/film-list';
 import { getCurrentSimilarFilms, getFilmDataLoading, getSimilarFilmsLoading } from '../../store/film-data/selectors';
@@ -38,7 +38,6 @@ export default function FilmScreen() {
     if (film) {
       dispatch(fetchFilmReviewsAction({filmId: film.id}));
       dispatch(fetchSimilarFilmsAction({filmId: film.id}));
-      dispatch(fetchFavoriteFilmsAction());
     }
   }, [dispatch, film]);
   return (
