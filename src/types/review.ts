@@ -1,4 +1,4 @@
-export type ReviewData = {
+export type Review = {
   filmId: string;
   id: string;
   date: string;

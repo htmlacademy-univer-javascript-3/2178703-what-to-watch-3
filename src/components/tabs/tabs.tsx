@@ -5,14 +5,14 @@ import { Film } from '../../types/film';
 import FilmOverview from './tab-film-overview';
 import FilmDetails from './tab-film-details';
 import FilmReviews from './tab-film-reviews';
-import { ReviewData } from '../../types/review-data';
+import { Review } from '../../types/review';
 
 type TabsProps = {
   film: Film;
-  reviews: ReviewData[];
+  reviews: Review[];
 }
 
-const getFilmActiveTabInfo = (activeTab: string, film: Film, reviews: ReviewData[]) => {
+const getFilmActiveTabInfo = (activeTab: string, film: Film, reviews: Review[]) => {
   switch(activeTab) {
     case FilmTab.Overview:
       return (

@@ -15,16 +15,18 @@ export type SmallFilmCardProps = {
 export default function SmallFilmCard({id, previewImage, name, previewVideoLink, isPlayingPreviewVideo, onSmallFilmCardMouseOver, onSmallFilmCardMouseOut}: SmallFilmCardProps) {
   return (
     <article className="small-film-card catalog__films-card" onMouseOver={onSmallFilmCardMouseOver} onMouseOut={onSmallFilmCardMouseOut}>
-      <div className="small-film-card__image">
-        <VideoPlayer
-          isPlaying={isPlayingPreviewVideo}
-          src={previewVideoLink}
-          poster={previewImage}
-        />
-      </div>
-      <h3 className="small-film-card__title">
-        <Link className="small-film-card__link" to={`${AppRoute.FilmData}/${id}`}>{name}</Link>
-      </h3>
+      <Link className="small-film-card__link" to={`${AppRoute.FilmData}/${id}`}>
+        <div className="small-film-card__image">
+          <VideoPlayer
+            isPlaying={isPlayingPreviewVideo}
+            src={previewVideoLink}
+            poster={previewImage}
+          />
+        </div>
+        <h3 className="small-film-card__title">
+          {name}
+        </h3>
+      </Link>
     </article>
   );
 }

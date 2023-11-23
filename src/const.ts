@@ -3,6 +3,9 @@ export const DEBOUNCE_TIME_FOR_PREVIEW_VIDEO = 1000;
 export const FILM_SAME_GENRE_COUNT = 4;
 export const SHOWN_FILM_COUNT = 8;
 export const DEFAULT_GENRE = 'All genres';
+export const SECOND_COUNT_IN_HOUR = 3600;
+export const SECOND_COUNT_IN_MINUTE = 60;
+export const MINUTE_COUNT_IN_HOUR = 60;
 
 export enum AppRoute {
   Main = '/',
@@ -17,6 +20,8 @@ export const APIRoute = {
   Login: '/login',
   Logout: '/logout',
   Comments: '/comments',
+  PromoFilm: '/promo',
+  FavoriteFilms: '/favorite'
 };
 
 export enum AuthorizationStatus {
@@ -36,3 +41,11 @@ export const FilmTabNameInterface = {
   [FilmTab.Details]: 'Details',
   [FilmTab.Reviews]: 'Reviews',
 };
+
+export enum NameSpace {
+  Genre = 'GENRE',
+  MyList = 'MY_LIST',
+  Film = 'FILM',
+  Review = 'REVIEW',
+  User = 'USER',
+}
