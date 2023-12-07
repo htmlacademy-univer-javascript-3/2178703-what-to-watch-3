@@ -2,8 +2,8 @@ import { Helmet } from 'react-helmet-async';
 import { useNavigate } from 'react-router-dom';
 import { AppRoute } from '../../const';
 import { useAppSelector } from '../../hooks';
-import { getFilmDataLoading } from '../../store/film-data/selectors';
-import LoadingScreen from '../loading-screen/loading-screen';
+import { getCurrentFilmLoading } from '../../store/film-data/selectors';
+import Spinner from '../../components/spinner/spinner';
 import useFilmById from '../../hooks/film-by-id';
 import { useRef, useState } from 'react';
 import NotFoundScreen from '../not-found-screen/not-found-screen';
@@ -12,7 +12,7 @@ import { getTimeLeft } from '../../utils/get-time-left';
 export default function PlayerScreen() {
   const navigate = useNavigate();
   const film = useFilmById();
-  const isFilmDataLoading = useAppSelector(getFilmDataLoading);
+  const isCurrentFilmLoading = useAppSelector(getCurrentFilmLoading);
 
   const [isPlaying, setIsPlaying] = useState(false);
   const videoRef = useRef<HTMLVideoElement | null>(null);
@@ -52,9 +52,9 @@ export default function PlayerScreen() {
   }
 
 
-  if (!film || isFilmDataLoading) {
+  if (!film || isCurrentFilmLoading) {
     return (
-      <LoadingScreen />
+      <Spinner />
     );
   }
 

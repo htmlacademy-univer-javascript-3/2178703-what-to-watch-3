@@ -12,7 +12,7 @@ import { getGenreList } from '../../utils/get-genre-list';
 import { getActiveGenre } from '../../store/genre-process/selectors';
 import { getFilms, getPromoFilm, getPromoFilmLoading } from '../../store/film-data/selectors';
 import { fetchPromoFilmAction } from '../../store/api-actions';
-import LoadingScreen from '../loading-screen/loading-screen';
+import Spinner from '../../components/spinner/spinner';
 
 export default function MainScreen() {
   const dispatch = useAppDispatch();
@@ -29,7 +29,7 @@ export default function MainScreen() {
 
   if(isPromoFilmLoading) {
     return(
-      <LoadingScreen />
+      <Spinner />
     );
   }
 
