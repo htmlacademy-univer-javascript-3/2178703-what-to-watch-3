@@ -10,19 +10,19 @@ import PlayerScreen from '../../pages/player-screen/player-screen';
 import NotFoundScreen from '../../pages/not-found-screen/not-found-screen';
 import PrivateRoute from '../private-route/private-route';
 import { useAppSelector } from '../../hooks';
-import LoadingScreen from '../../pages/loading-screen/loading-screen';
+import Spinner from '../spinner/spinner';
 import HistoryRouter from '../history-route/history-route';
 import browserHistory from '../../browser-history';
-import { getFilmsDataLoading } from '../../store/film-data/selectors';
-import { getAuthorizationStatus } from '../../store/user-process/selector';
+import { getFilmsLoading } from '../../store/film-data/selectors';
+import { getAuthorizationStatus } from '../../store/user-process/selectors';
 
 export default function App() {
-  const isFilmsDataLoading = useAppSelector(getFilmsDataLoading);
+  const isFilmsLoading = useAppSelector(getFilmsLoading);
   const authorizationStatus = useAppSelector(getAuthorizationStatus);
 
-  if (isFilmsDataLoading) {
+  if (isFilmsLoading) {
     return (
-      <LoadingScreen />
+      <Spinner />
     );
   }
   return (

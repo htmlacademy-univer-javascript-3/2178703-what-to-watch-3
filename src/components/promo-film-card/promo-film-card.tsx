@@ -5,7 +5,7 @@ import UserBlock from '../user-block/user-block';
 import { useAppSelector } from '../../hooks';
 import { getFavoriteFilmCount } from '../../store/my-list-process/selectors';
 import ChangeFavoriteStatusButton from '../change-favorite-status-button/change-favorite-status-button';
-import { getAuthorizationStatus } from '../../store/user-process/selector';
+import { getAuthorizationStatus } from '../../store/user-process/selectors';
 
 export type PromoFilmCardProps = {
   id: string;

@@ -4,14 +4,14 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AppRoute, AuthorizationStatus, FILM_SAME_GENRE_COUNT } from '../../const';
 import Tabs from '../../components/tabs/tabs';
 import useFilmById from '../../hooks/film-by-id';
-import LoadingScreen from '../loading-screen/loading-screen';
+import Spinner from '../../components/spinner/spinner';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { fetchFilmReviewsAction, fetchSimilarFilmsAction } from '../../store/api-actions';
 import { useEffect } from 'react';
 import FilmList from '../../components/film-list/film-list';
-import { getCurrentSimilarFilms, getFilmDataLoading, getSimilarFilmsLoading } from '../../store/film-data/selectors';
-import { getCurrentFilmReviews, getFilmReviewsLoading } from '../../store/review-data/selectors';
-import { getAuthorizationStatus } from '../../store/user-process/selector';
+import { getCurrentSimilarFilms, getCurrentFilmLoading, getCurrentSimilarFilmsLoading } from '../../store/film-data/selectors';
+import { getCurrentFilmReviews, getCurrentFilmReviewsLoading } from '../../store/review-data/selectors';
+import { getAuthorizationStatus } from '../../store/user-process/selectors';
 import HeaderLogo from '../../components/header-logo/header-logo';
 import UserBlock from '../../components/user-block/user-block';
 import { getFavoriteFilmCount } from '../../store/my-list-process/selectors';
@@ -22,13 +22,13 @@ export default function FilmScreen() {
   const dispatch = useAppDispatch();
 
   const film = useFilmById();
-  const isFilmDataLoading = useAppSelector(getFilmDataLoading);
+  const isCurrentFilmLoading = useAppSelector(getCurrentFilmLoading);
 
   const similarFilms = useAppSelector(getCurrentSimilarFilms);
-  const isSimilarFilmsDataLoading = useAppSelector(getSimilarFilmsLoading);
+  const isSimilarFilmsDataLoading = useAppSelector(getCurrentSimilarFilmsLoading);
 
   const filmReviews = useAppSelector(getCurrentFilmReviews);
-  const isFilmReviewsDataLoading = useAppSelector(getFilmReviewsLoading);
+  const isFilmReviewsDataLoading = useAppSelector(getCurrentFilmReviewsLoading);
 
   const favoriteFilmCount = useAppSelector(getFavoriteFilmCount);
 
@@ -42,7 +42,7 @@ export default function FilmScreen() {
   }, [dispatch, film]);
   return (
     <div>
-      {film && !isFilmDataLoading ?
+      {film && !isCurrentFilmLoading ?
         <>
           <Helmet>
             <title>WTW. {film.name}</title>
@@ -108,7 +108,7 @@ export default function FilmScreen() {
               </section>}
             <Footer />
           </div>
-        </> : <LoadingScreen />}
+        </> : <Spinner />}
     </div>
   );
 }
