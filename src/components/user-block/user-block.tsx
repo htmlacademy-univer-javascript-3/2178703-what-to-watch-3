@@ -2,16 +2,16 @@ import { Link } from 'react-router-dom';
 import { AppRoute, AuthorizationStatus } from '../../const';
 import { useAppSelector } from '../../hooks';
 import SignOutButton from '../sign-out-button/sign-out-button';
-import { getAuthorizationStatus } from '../../store/user-process/selectors';
+import { getAuthorizationStatus, getAvatarUrl } from '../../store/user-process/selectors';
 
-const getUserBlock = (authorizationStatus: AuthorizationStatus) => {
+const getUserBlock = (authorizationStatus: AuthorizationStatus, avatarUrl: string) => {
   if(authorizationStatus === AuthorizationStatus.Auth) {
     return (
       <ul className="user-block">
         <li className="user-block__item">
           <div className="user-block__avatar">
             <Link to={AppRoute.MyList}>
-              <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
+              <img src={avatarUrl} alt="User avatar" width="63" height="63" />
             </Link>
           </div>
         </li>
@@ -38,9 +38,10 @@ const getUserBlock = (authorizationStatus: AuthorizationStatus) => {
 
 export default function UserBlock() {
   const authorizationStatus = useAppSelector(getAuthorizationStatus);
+  const avatarUrl = useAppSelector(getAvatarUrl);
   return (
     <>
-      {getUserBlock(authorizationStatus)}
+      {getUserBlock(authorizationStatus, avatarUrl)}
     </>
   );
 }

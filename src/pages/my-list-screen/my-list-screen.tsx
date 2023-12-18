@@ -7,7 +7,7 @@ import { useAppDispatch, useAppSelector } from '../../hooks';
 import { getFavoriteFilmCount, getFavoriteFilms, getFavoriteFilmsLoading } from '../../store/my-list-process/selectors';
 import Spinner from '../../components/spinner/spinner';
 import { useEffect } from 'react';
-import { fetchFavoriteFilmsAction } from '../../store/api-actions';
+import { fetchFavoriteFilmsAction } from '../../store/api-actions/get-actions/get-actions';
 
 export default function MyListScreen() {
   const dispatch = useAppDispatch();

@@ -1,4 +1,4 @@
-import { DEFAULT_GENRE } from '../const';
+import { DEFAULT_GENRE, SHOWN_GENRE_COUNT } from '../const';
 import { PreviewFilm } from '../types/preview-film';
 
 export const getGenreList = (films: PreviewFilm[]) => {
@@ -9,5 +9,5 @@ export const getGenreList = (films: PreviewFilm[]) => {
     }
   });
   genreList.sort().unshift(DEFAULT_GENRE);
-  return genreList;
+  return genreList.slice(0, SHOWN_GENRE_COUNT);
 };

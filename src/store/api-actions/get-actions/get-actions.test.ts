@@ -1,15 +1,15 @@
-import MockAdapter from 'axios-mock-adapter';
-import { createAPI } from '../services/api';
-import thunk from 'redux-thunk';
 import { configureMockStore } from '@jedmao/redux-mock-store';
-import { State } from '../types/state';
+import MockAdapter from 'axios-mock-adapter';
+import thunk from 'redux-thunk';
+import { State } from '../../../types/state';
 import { Action } from 'redux';
-import { AppThunkDispatch } from '../utils/mock-component';
-import { APIRoute, NameSpace } from '../const';
-import { checkAuthAction, fetchFavoriteFilmsAction, fetchFilmAction, fetchFilmReviewsAction, fetchFilmsAction, fetchPromoFilmAction, fetchSimilarFilmsAction } from './api-actions';
-import { extractActionsTypes, makeFakeFilm, makeFakeFilmId, makeFakePreviewFilms, makeFakeReview } from '../utils/mocks';
+import { NameSpace, APIRoute } from '../../../const';
+import { createAPI } from '../../../services/api';
+import { AppThunkDispatch } from '../../../utils/mock-component';
+import { extractActionsTypes, makeFakeAvatarUrl, makeFakeFilm, makeFakeFilmId, makeFakePreviewFilms, makeFakeReview } from '../../../utils/mocks';
+import { checkAuthAction, fetchFilmAction, fetchPromoFilmAction, fetchSimilarFilmsAction, fetchFilmsAction, fetchFilmReviewsAction, fetchFavoriteFilmsAction } from './get-actions';
 
-describe('Async actions', () => {
+describe('Async get-actions', () => {
   const axios = createAPI();
   const mockAxiosAdapter = new MockAdapter(axios);
   const middleware = [thunk.withExtraArgument(axios)];
@@ -32,6 +32,7 @@ describe('Async actions', () => {
         currentFilmReviews: [],
         isCurrentFilmReviewsLoading: false,
       },
+      [NameSpace.User]: { avatarUrl: '' },
       [NameSpace.MyList]: {
         favoriteFilms: [],
         favoriteFilmCount: 0,
@@ -42,15 +43,24 @@ describe('Async actions', () => {
 
   describe('checkAuthAction', () => {
     it('dispatch "checkAuthAction.pending" and "checkAuthAction.fulfilled" when server response 200', async () => {
-      mockAxiosAdapter.onGet(APIRoute.Login).reply(200);
+      const expectedUrl = makeFakeAvatarUrl();
+      mockAxiosAdapter
+        .onGet(APIRoute.Login)
+        .reply(200, { avatarUrl: expectedUrl });
 
       await store.dispatch(checkAuthAction());
-      const actions = extractActionsTypes(store.getActions());
 
-      expect(actions).toEqual([
+      const emittedActions = store.getActions();
+      const extractedActionTypes = extractActionsTypes(emittedActions);
+      const checkAuthActionFulfilled = emittedActions.at(1) as ReturnType<
+        typeof checkAuthAction.fulfilled
+      >;
+
+      expect(extractedActionTypes).toEqual([
         checkAuthAction.pending.type,
         checkAuthAction.fulfilled.type,
       ]);
+      expect(checkAuthActionFulfilled.payload).toBe(expectedUrl);
     });
 
     it('dispatch "checkAuthAction.pending" and "checkAuthAction.rejected" when server response 401', async() => {

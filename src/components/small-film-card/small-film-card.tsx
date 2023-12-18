@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { AppRoute } from '../../const';
 import VideoPlayer from '../video-player/video-player';
 
-export type SmallFilmCardProps = {
+type SmallFilmCardProps = {
   id: string;
   name: string;
   previewImage: string;

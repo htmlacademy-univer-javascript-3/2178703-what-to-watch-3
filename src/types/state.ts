@@ -7,6 +7,7 @@ import { Review } from './review';
 
 export type UserProcess = {
   authorizationStatus: AuthorizationStatus;
+  avatarUrl: string;
 };
 
 export type FilmData = {
@@ -33,6 +34,10 @@ export type MyFilmProcess = {
   favoriteFilms: PreviewFilm[];
   favoriteFilmCount: number;
   isFavoriteFilmsLoading: boolean;
+}
+
+export type PostingReviewProcess = {
+  isFormReviewSubmitting: boolean;
 }
 
 export type State = ReturnType<typeof store.getState>;

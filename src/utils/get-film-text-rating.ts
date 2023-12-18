@@ -1,4 +1,4 @@
-export const getFilmRating = (rating: number) => {
+export const getFilmTextRating = (rating: number) => {
   if (rating < 3) {
     return 'Bad';
   } else if (rating < 5) {

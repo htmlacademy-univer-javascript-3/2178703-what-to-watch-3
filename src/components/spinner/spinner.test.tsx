@@ -2,7 +2,7 @@ import { withHistory } from '../../utils/mock-component';
 import { render, screen } from '@testing-library/react';
 import Spinner from './spinner';
 
-describe('Component: Spinner', () => {
+describe('Spinner', () => {
   it('render correctly', () => {
 
     const spinnerId = 'spinner';

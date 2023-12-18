@@ -1,4 +1,4 @@
-import { getFilmRating } from '../../utils/get-film-rating';
+import { getFilmTextRating } from '../../utils/get-film-text-rating';
 
 type FilmOverviewProps = {
   description: string;
@@ -14,7 +14,7 @@ export default function FilmOverview({description, rating, scoresCount, director
       <div className="film-rating">
         <div className="film-rating__score">{rating}</div>
         <p className="film-rating__meta">
-          <span className="film-rating__level">{getFilmRating(rating)}</span>
+          <span className="film-rating__level">{getFilmTextRating(rating)}</span>
           <span className="film-rating__count">{scoresCount} ratings</span>
         </p>
       </div>
