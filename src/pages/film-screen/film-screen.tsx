@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { Link, useNavigate } from 'react-router-dom';
 import { AppRoute, AuthorizationStatus, FILM_SAME_GENRE_COUNT } from '../../const';
 import Tabs from '../../components/tabs/tabs';
-import useFilmById from '../../hooks/film-by-id';
+import useFilmById from '../../hooks/use-film-by-id';
 import Spinner from '../../components/spinner/spinner';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { useEffect } from 'react';
@@ -74,7 +74,6 @@ export default function FilmScreen() {
                     </button>
                     <ChangeFavoriteStatusButton
                       filmId={film.id}
-                      isFavorite={film.isFavorite}
                       authorizationStatus={authorizationStatus}
                     />
 

@@ -13,10 +13,9 @@ export type PromoFilmCardProps = {
   backgroundImage: string;
   genre: string;
   released: number;
-  isFavorite: boolean;
 }
 
-export default function PromoFilmCard({id, posterImage, name, genre, released, backgroundImage, isFavorite}: PromoFilmCardProps) {
+export default function PromoFilmCard({id, posterImage, name, genre, released, backgroundImage}: PromoFilmCardProps) {
   const navigate = useNavigate();
   const authorizationStatus = useAppSelector(getAuthorizationStatus);
 
@@ -55,7 +54,6 @@ export default function PromoFilmCard({id, posterImage, name, genre, released, b
               </button>
               <ChangeFavoriteStatusButton
                 filmId={id}
-                isFavorite={isFavorite}
                 authorizationStatus={authorizationStatus}
               />
             </div>

@@ -4,7 +4,7 @@ import { AppRoute } from '../../const';
 import { useAppSelector } from '../../hooks';
 import { getCurrentFilmLoading } from '../../store/film-data/selectors';
 import Spinner from '../../components/spinner/spinner';
-import useFilmById from '../../hooks/film-by-id';
+import useFilmById from '../../hooks/use-film-by-id';
 import { useRef, useState } from 'react';
 import NotFoundScreen from '../not-found-screen/not-found-screen';
 import { getTimeLeft } from '../../utils/get-time-left';

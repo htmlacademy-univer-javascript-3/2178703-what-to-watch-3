@@ -1,11 +1,12 @@
 import cn from 'classnames';
 import { useState } from 'react';
-import { FilmTab, FilmTabNameInterface } from '../../const';
+import { FilmTab } from '../../const';
 import { Film } from '../../types/film';
 import FilmOverview from './tab-film-overview';
 import FilmDetails from './tab-film-details';
 import FilmReviews from './tab-film-reviews';
 import { Review } from '../../types/review';
+import { Link } from 'react-router-dom';
 
 type TabsProps = {
   film: Film;
@@ -44,15 +45,15 @@ const getFilmActiveTabInfo = (activeTab: string, film: Film, reviews: Review[]) 
 export default function Tabs({film, reviews}: TabsProps) {
   const [activeTab, setActiveTab] = useState(FilmTab.Overview);
 
-  const handlerOverviewLinkClick = () => {
+  const handleOverviewLinkClick = () => {
     setActiveTab(FilmTab.Overview);
   };
 
-  const handlerDetailsLinkClick = () => {
+  const handleDetailsLinkClick = () => {
     setActiveTab(FilmTab.Details);
   };
 
-  const handlerReviewsLinkClick = () => {
+  const handleReviewsLinkClick = () => {
     setActiveTab(FilmTab.Reviews);
   };
   return(
@@ -60,13 +61,13 @@ export default function Tabs({film, reviews}: TabsProps) {
       <nav className="film-nav film-card__nav">
         <ul className="film-nav__list">
           <li className={cn('film-nav__item', {'film-nav__item--active': activeTab === FilmTab.Overview})}>
-            <a data-testid="film-overview-link" className="film-nav__link" onClick={handlerOverviewLinkClick}>{FilmTabNameInterface[FilmTab.Overview]}</a>
+            <Link to="#" data-testid="film-overview-link" className="film-nav__link" onClick={handleOverviewLinkClick}>{FilmTab.Overview}</Link>
           </li>
           <li className={cn('film-nav__item', {'film-nav__item--active': activeTab === FilmTab.Details})}>
-            <a data-testid="film-details-link" className="film-nav__link" onClick={handlerDetailsLinkClick}>{FilmTabNameInterface[FilmTab.Details]}</a>
+            <Link to="#" data-testid="film-details-link" className="film-nav__link" onClick={handleDetailsLinkClick}>{FilmTab.Details}</Link>
           </li>
           <li className={cn('film-nav__item', {'film-nav__item--active': activeTab === FilmTab.Reviews})}>
-            <a data-testid="film-reviews-link" className="film-nav__link" onClick={handlerReviewsLinkClick}>{FilmTabNameInterface[FilmTab.Reviews]}</a>
+            <Link to="#" data-testid="film-reviews-link" className="film-nav__link" onClick={handleReviewsLinkClick}>{FilmTab.Reviews}</Link>
           </li>
         </ul>
       </nav>
