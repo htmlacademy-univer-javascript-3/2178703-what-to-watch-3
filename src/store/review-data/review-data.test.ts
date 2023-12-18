@@ -1,6 +1,6 @@
 import { ReviewData } from '../../types/state';
 import { makeFakeReview } from '../../utils/mocks';
-import { fetchFilmReviewsAction } from '../api-actions';
+import { fetchFilmReviewsAction } from '../api-actions/get-actions/get-actions';
 import { reviewData } from './review-data';
 
 describe('ReviewData slice', () => {

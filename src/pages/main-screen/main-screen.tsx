@@ -11,8 +11,8 @@ import { SHOWN_FILM_COUNT } from '../../const';
 import { getGenreList } from '../../utils/get-genre-list';
 import { getActiveGenre } from '../../store/genre-process/selectors';
 import { getFilms, getPromoFilm, getPromoFilmLoading } from '../../store/film-data/selectors';
-import { fetchPromoFilmAction } from '../../store/api-actions';
 import Spinner from '../../components/spinner/spinner';
+import { fetchPromoFilmAction } from '../../store/api-actions/get-actions/get-actions';
 
 export default function MainScreen() {
   const dispatch = useAppDispatch();
@@ -49,7 +49,7 @@ export default function MainScreen() {
         isFavorite={promoFilmCard.isFavorite}
       />}
 
-      <div className="page-content">
+      <div className="page-content" data-testid="page-content">
         <section className="catalog">
           <h2 className="catalog__title visually-hidden">Catalog</h2>
           <GenreList genres={getGenreList(films)} onGenreClick={() => setShownFilmCount(SHOWN_FILM_COUNT)}/>

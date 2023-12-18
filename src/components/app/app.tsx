@@ -11,8 +11,6 @@ import NotFoundScreen from '../../pages/not-found-screen/not-found-screen';
 import PrivateRoute from '../private-route/private-route';
 import { useAppSelector } from '../../hooks';
 import Spinner from '../spinner/spinner';
-import HistoryRouter from '../history-route/history-route';
-import browserHistory from '../../browser-history';
 import { getFilmsLoading } from '../../store/film-data/selectors';
 import { getAuthorizationStatus } from '../../store/user-process/selectors';
 
@@ -27,43 +25,50 @@ export default function App() {
   }
   return (
     <HelmetProvider>
-      <HistoryRouter history={browserHistory}>
-        <Routes>
-          <Route
-            path={AppRoute.Main}
-            element={<MainScreen />}
-          />
-          <Route
-            path={AppRoute.SignIn}
-            element={<SignInScreen />}
-          />
-          <Route
-            path={AppRoute.MyList}
-            element={
-              <PrivateRoute
-                authorizationStatus={authorizationStatus}
-              >
-                <MyListScreen />
-              </PrivateRoute>
-            }
-          />
-          <Route path={AppRoute.FilmData}>
-            <Route index element={<NotFoundScreen />} />
-            <Route path=':id'>
-              <Route index element={<FilmScreen />} />
-              <Route path='review' element={<AddReviewScreen />} />
-            </Route>
+      <Routes>
+        <Route
+          path={AppRoute.Main}
+          element={<MainScreen />}
+        />
+        <Route
+          path={AppRoute.SignIn}
+          element={<SignInScreen />}
+        />
+        <Route
+          path={AppRoute.MyList}
+          element={
+            <PrivateRoute
+              authorizationStatus={authorizationStatus}
+            >
+              <MyListScreen />
+            </PrivateRoute>
+          }
+        />
+        <Route path={AppRoute.FilmData}>
+          <Route index element={<NotFoundScreen />} />
+          <Route path=':id'>
+            <Route index element={<FilmScreen />} />
+            <Route
+              path='review'
+              element={
+                <PrivateRoute
+                  authorizationStatus={authorizationStatus}
+                >
+                  <AddReviewScreen />
+                </PrivateRoute>
+              }
+            />
           </Route>
-          <Route path={AppRoute.Player}>
-            <Route index element={<NotFoundScreen />} />
-            <Route path=':id' element={<PlayerScreen />} />
-          </Route>
-          <Route
-            path="*"
-            element={<NotFoundScreen />}
-          />
-        </Routes>
-      </HistoryRouter>
+        </Route>
+        <Route path={AppRoute.Player}>
+          <Route index element={<NotFoundScreen />} />
+          <Route path=':id' element={<PlayerScreen />} />
+        </Route>
+        <Route
+          path="*"
+          element={<NotFoundScreen />}
+        />
+      </Routes>
     </HelmetProvider>
   );
 }

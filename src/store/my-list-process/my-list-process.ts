@@ -1,7 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { NameSpace } from '../../const';
 import { MyFilmProcess } from '../../types/state';
-import { fetchFavoriteFilmsAction, postFilmFavoriteStatus } from '../api-actions';
+import { fetchFavoriteFilmsAction } from '../api-actions/get-actions/get-actions';
+import { postFilmFavoriteStatus } from '../api-actions/post-actions/post-actions';
 
 const initialState: MyFilmProcess = {
   favoriteFilms: [],
@@ -12,7 +13,12 @@ const initialState: MyFilmProcess = {
 export const myListProcess = createSlice({
   name: NameSpace.MyList,
   initialState,
-  reducers: {},
+  reducers: {
+    clearMyList: (state) => {
+      state.favoriteFilms = [];
+      state.favoriteFilmCount = 0;
+    },
+  },
   extraReducers(builder) {
     builder
       .addCase(fetchFavoriteFilmsAction.pending, (state) => {
@@ -33,3 +39,5 @@ export const myListProcess = createSlice({
       });
   }
 });
+
+export const { clearMyList } = myListProcess.actions;

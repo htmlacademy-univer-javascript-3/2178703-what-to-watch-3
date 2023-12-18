@@ -4,7 +4,7 @@ import FilmDetails from './tab-film-details';
 import { makeFakeFilm } from '../../utils/mocks';
 import { getRunTime } from '../../utils/get-run-time';
 
-describe('Component: FilmDetails', () => {
+describe('FilmDetails', () => {
   it('render correctly', () => {
     const film = makeFakeFilm();
     const filmDirector = film.director;
@@ -12,12 +12,6 @@ describe('Component: FilmDetails', () => {
     const filmRunTime = film.runTime;
     const filmReleased = film.released;
     const filmGenre = film.genre;
-
-    const expectedTextDirector = /Director/i;
-    const expectedTextStarring = /Starring/i;
-    const expectedTextRunTime = /Run Time/i;
-    const expectedTextReleased = /Released/i;
-    const expectedTextGenre = /Genre/i;
 
     const preparedComponent = withHistory(
       <FilmDetails
@@ -31,22 +25,22 @@ describe('Component: FilmDetails', () => {
 
     render(preparedComponent);
 
-    expect(screen.getByText(expectedTextDirector)).toBeInTheDocument();
+    expect(screen.getByText(/Director/i)).toBeInTheDocument();
     expect(screen.getByText(filmDirector)).toBeInTheDocument();
 
-    expect(screen.getByText(expectedTextStarring)).toBeInTheDocument();
+    expect(screen.getByText(/Starring/i)).toBeInTheDocument();
 
     filmStarring.forEach((star) => {
       expect(screen.getByTestId(star)).toBeInTheDocument();
     });
 
-    expect(screen.getByText(expectedTextRunTime)).toBeInTheDocument();
+    expect(screen.getByText(/Run Time/i)).toBeInTheDocument();
     expect(screen.getByText(getRunTime(filmRunTime))).toBeInTheDocument();
 
-    expect(screen.getByText(expectedTextReleased)).toBeInTheDocument();
+    expect(screen.getByText(/Released/i)).toBeInTheDocument();
     expect(screen.getByText(filmReleased)).toBeInTheDocument();
 
-    expect(screen.getByText(expectedTextGenre)).toBeInTheDocument();
+    expect(screen.getByText(/Genre/i)).toBeInTheDocument();
     expect(screen.getByText(filmGenre)).toBeInTheDocument();
   });
 });

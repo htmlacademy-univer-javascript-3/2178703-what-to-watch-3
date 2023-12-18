@@ -6,7 +6,6 @@ import Tabs from '../../components/tabs/tabs';
 import useFilmById from '../../hooks/film-by-id';
 import Spinner from '../../components/spinner/spinner';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { fetchFilmReviewsAction, fetchSimilarFilmsAction } from '../../store/api-actions';
 import { useEffect } from 'react';
 import FilmList from '../../components/film-list/film-list';
 import { getCurrentSimilarFilms, getCurrentFilmLoading, getCurrentSimilarFilmsLoading } from '../../store/film-data/selectors';
@@ -14,8 +13,8 @@ import { getCurrentFilmReviews, getCurrentFilmReviewsLoading } from '../../store
 import { getAuthorizationStatus } from '../../store/user-process/selectors';
 import HeaderLogo from '../../components/header-logo/header-logo';
 import UserBlock from '../../components/user-block/user-block';
-import { getFavoriteFilmCount } from '../../store/my-list-process/selectors';
 import ChangeFavoriteStatusButton from '../../components/change-favorite-status-button/change-favorite-status-button';
+import { fetchFilmReviewsAction, fetchSimilarFilmsAction } from '../../store/api-actions/get-actions/get-actions';
 
 export default function FilmScreen() {
   const navigate = useNavigate();
@@ -29,8 +28,6 @@ export default function FilmScreen() {
 
   const filmReviews = useAppSelector(getCurrentFilmReviews);
   const isFilmReviewsDataLoading = useAppSelector(getCurrentFilmReviewsLoading);
-
-  const favoriteFilmCount = useAppSelector(getFavoriteFilmCount);
 
   const authorizationStatus = useAppSelector(getAuthorizationStatus);
 
@@ -78,7 +75,6 @@ export default function FilmScreen() {
                     <ChangeFavoriteStatusButton
                       filmId={film.id}
                       isFavorite={film.isFavorite}
-                      favoriteFilmCount={favoriteFilmCount}
                       authorizationStatus={authorizationStatus}
                     />
 

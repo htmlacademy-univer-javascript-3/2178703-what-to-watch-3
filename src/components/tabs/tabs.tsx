@@ -60,13 +60,13 @@ export default function Tabs({film, reviews}: TabsProps) {
       <nav className="film-nav film-card__nav">
         <ul className="film-nav__list">
           <li className={cn('film-nav__item', {'film-nav__item--active': activeTab === FilmTab.Overview})}>
-            <a className="film-nav__link" onClick={handlerOverviewLinkClick}>{FilmTabNameInterface[FilmTab.Overview]}</a>
+            <a data-testid="film-overview-link" className="film-nav__link" onClick={handlerOverviewLinkClick}>{FilmTabNameInterface[FilmTab.Overview]}</a>
           </li>
           <li className={cn('film-nav__item', {'film-nav__item--active': activeTab === FilmTab.Details})}>
-            <a className="film-nav__link" onClick={handlerDetailsLinkClick}>{FilmTabNameInterface[FilmTab.Details]}</a>
+            <a data-testid="film-details-link" className="film-nav__link" onClick={handlerDetailsLinkClick}>{FilmTabNameInterface[FilmTab.Details]}</a>
           </li>
           <li className={cn('film-nav__item', {'film-nav__item--active': activeTab === FilmTab.Reviews})}>
-            <a className="film-nav__link" onClick={handlerReviewsLinkClick}>{FilmTabNameInterface[FilmTab.Reviews]}</a>
+            <a data-testid="film-reviews-link" className="film-nav__link" onClick={handlerReviewsLinkClick}>{FilmTabNameInterface[FilmTab.Reviews]}</a>
           </li>
         </ul>
       </nav>

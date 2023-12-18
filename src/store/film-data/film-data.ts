@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { NameSpace } from '../../const';
 import { FilmData } from '../../types/state';
-import { fetchFilmAction, fetchFilmsAction, fetchPromoFilmAction, fetchSimilarFilmsAction } from '../api-actions';
+import { fetchFilmsAction, fetchFilmAction, fetchSimilarFilmsAction, fetchPromoFilmAction } from '../api-actions/get-actions/get-actions';
 
 const initialState: FilmData = {
   films: [],

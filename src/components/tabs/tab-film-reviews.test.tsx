@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 import FilmReviews from './tab-film-reviews';
 import { Review } from '../../types/review';
 
-describe('Component: FilmReviews', () => {
+describe('FilmReviews', () => {
   it('render correctly', () => {
     const reviews = [] as Review[];
 

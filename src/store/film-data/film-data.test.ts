@@ -1,6 +1,6 @@
 import { FilmData } from '../../types/state';
 import { makeFakeFilm, makeFakePreviewFilms, makeFakePromoFilm } from '../../utils/mocks';
-import { fetchFilmAction, fetchFilmsAction, fetchPromoFilmAction, fetchSimilarFilmsAction } from '../api-actions';
+import { fetchFilmsAction, fetchFilmAction, fetchSimilarFilmsAction, fetchPromoFilmAction } from '../api-actions/get-actions/get-actions';
 import { filmData } from './film-data';
 
 describe('FilmData slice', () => {
