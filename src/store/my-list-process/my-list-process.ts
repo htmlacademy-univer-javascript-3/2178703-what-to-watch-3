@@ -30,12 +30,15 @@ export const myListProcess = createSlice({
         state.isFavoriteFilmsLoading = false;
       })
       .addCase(postFilmFavoriteStatus.fulfilled, (state, action) => {
-        const film = action.payload;
-        if(film.isFavorite) {
-          state.favoriteFilmCount++;
+        const currentFilm = action.payload;
+        if(currentFilm.isFavorite) {
+          state.favoriteFilms.push(currentFilm);
         } else {
-          state.favoriteFilmCount--;
+          state.favoriteFilms = state.favoriteFilms.filter(
+            (film) => film.id !== currentFilm.id
+          );
         }
+        state.favoriteFilmCount = state.favoriteFilms.length;
       });
   }
 });

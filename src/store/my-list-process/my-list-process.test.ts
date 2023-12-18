@@ -60,7 +60,7 @@ describe('MyListProcess slice', () => {
         id: film.id,
         status: film.isFavorite ? 1 : 0,
       };
-      const expectedState = { ...initialState, favoriteFilmCount: 1 };
+      const expectedState = { ...initialState, favoriteFilms: [film], favoriteFilmCount: 1 };
 
       const result = myListProcess.reducer(initialState, postFilmFavoriteStatus.fulfilled(film, '', filmFavoriteStatus));
 
@@ -73,7 +73,7 @@ describe('MyListProcess slice', () => {
         id: film.id,
         status: film.isFavorite ? 1 : 0,
       };
-      const expectedState = { ...initialState, favoriteFilmCount: -1 };
+      const expectedState = { ...initialState };
 
       const result = myListProcess.reducer(initialState, postFilmFavoriteStatus.fulfilled(film, '', filmFavoriteStatus));
 

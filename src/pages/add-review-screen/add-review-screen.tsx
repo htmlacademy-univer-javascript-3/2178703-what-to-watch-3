@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { AppRoute } from '../../const';
 import FormReview from '../../components/form-review/form-review';
 import { useAppSelector } from '../../hooks';
-import useFilmById from '../../hooks/film-by-id';
+import useFilmById from '../../hooks/use-film-by-id';
 import Spinner from '../../components/spinner/spinner';
 import UserBlock from '../../components/user-block/user-block';
 import HeaderLogo from '../../components/header-logo/header-logo';

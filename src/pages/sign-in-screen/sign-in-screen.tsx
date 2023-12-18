@@ -1,21 +1,27 @@
 import Footer from '../../components/footer/footer';
 import { Helmet } from 'react-helmet-async';
 import { useRef, FormEvent, useState } from 'react';
-import { useAppDispatch } from '../../hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks';
 import HeaderLogo from '../../components/header-logo/header-logo';
 import cn from 'classnames';
-import { SingInErrorMessage } from '../../const';
+import { AppRoute, AuthorizationStatus, SingInErrorMessage } from '../../const';
 import { loginAction } from '../../store/api-actions/post-actions/post-actions';
+import { getAuthorizationStatus } from '../../store/user-process/selectors';
+import { redirectToRoute } from '../../store/action';
 
 
 export default function SignInScreen() {
+  const dispatch = useAppDispatch();
   const emailRef = useRef<HTMLInputElement | null>(null);
   const passwordRef = useRef<HTMLInputElement | null>(null);
   const [error, setError] = useState('');
   const [isErrorEmail, setIsErrorEmail] = useState(false);
   const [isErrorPassword, setIsErrorPassword] = useState(false);
+  const authorizationStatus = useAppSelector(getAuthorizationStatus);
 
-  const dispatch = useAppDispatch();
+  if(authorizationStatus === AuthorizationStatus.Auth) {
+    dispatch(redirectToRoute(AppRoute.Main));
+  }
 
   const containsAnyLetters = (password: string) => /[a-z]+/i.test(password);
   const containsAnyNumbers = (password: string) => /[0-9]+/i.test(password);
@@ -24,6 +30,8 @@ export default function SignInScreen() {
   const handleSubmit = (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
     if (emailRef.current && passwordRef.current) {
+      setIsErrorEmail(false);
+      setIsErrorPassword(false);
       if(!isValidEmail(emailRef.current.value)) {
         setError(SingInErrorMessage.Email);
         setIsErrorEmail(true);

@@ -2,6 +2,7 @@ import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse, AxiosError } f
 import { StatusCodes } from 'http-status-codes';
 import { toast } from 'react-toastify';
 import { dropToken, getToken } from './token';
+import { ERROR_MESSAGE } from '../const';
 
 type DetailMessageType = {
   type: string;
@@ -43,7 +44,7 @@ export const createAPI = (): AxiosInstance => {
       } else if (error.response && shouldUnauthorizedError(error.response)) {
         dropToken();
       } else {
-        toast.warn('Error has occurred. Please repeat again');
+        toast.warn(ERROR_MESSAGE);
       }
 
       throw error;

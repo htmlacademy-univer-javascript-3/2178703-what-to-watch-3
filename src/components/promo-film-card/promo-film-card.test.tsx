@@ -15,7 +15,6 @@ describe('PromoFilmCard', () => {
           name={promoFilmCard.name}
           genre={promoFilmCard.genre}
           released={promoFilmCard.released}
-          isFavorite={promoFilmCard.isFavorite}
           backgroundImage={promoFilmCard.backgroundImage}
         />
       ),
